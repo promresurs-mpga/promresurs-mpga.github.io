@@ -22,7 +22,9 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:'Ubuntu Condensed',sans-serif}
 
-.clickable,.lang-item{transition:all .25s ease}
+a{color:inherit;text-decoration:none}
+.clickable{transition:.25s}
+.clickable:hover{color:var(--bg-light)}
 
 .header{
 background:var(--bg-light);
@@ -32,6 +34,8 @@ justify-content:space-between;
 align-items:center;
 padding:calc(var(--fs-1)/8);
 }
+
+.header>div:first-child{margin-left:calc(var(--fs-1)/4)}
 
 .title{font-size:var(--fs-1);font-weight:bold;cursor:pointer}
 .subtitle{font-size:var(--fs-3);color:var(--gray);margin-top:calc(var(--fs-3)/8)}
@@ -45,17 +49,18 @@ display:none;
 position:absolute;
 right:0;
 background:var(--white);
-border:2px solid var(--bg-light);
-min-width:120px;
+border:calc(var(--fs-5)/2) solid var(--bg-light);
+min-width:calc(var(--fs-1)*1.5);
 }
 
 .lang-item{
-padding:10px;
+padding:calc(var(--fs-5));
 text-align:center;
+color:var(--bg-light);
 }
 
-.lang-item.active{background:var(--bg-light);color:white;pointer-events:none}
-.lang-item:hover:not(.active){background:var(--bg-dark);color:white}
+.lang-item.active{background:var(--bg-dark);color:var(--gray);pointer-events:none}
+.lang-item:hover:not(.active){background:var(--bg-light);color:white}
 
 .section-bg{width:100%}
 .section-inner{
@@ -83,8 +88,7 @@ text-align:center;
 padding:calc(var(--fs-5));
 text-align:center;
 background:white;
-border:4px solid;
-font-style:normal;
+border:calc(var(--fs-3)/8) solid;
 }
 
 .table th{font-size:var(--fs-3)}
@@ -103,8 +107,8 @@ font-style:normal;
 .advantages-list{margin-top:calc(var(--fs-3));}
 .adv-item{
 font-size:var(--fs-3);
-padding:15px 0;
-border-bottom:6px solid var(--bg-light);
+padding:calc(var(--fs-4)/2) 0;
+border-bottom:calc(var(--fs-2)/16) solid var(--bg-light);
 }
 
 .contacts-bg{background:var(--bg-light)}
@@ -113,11 +117,12 @@ max-width:75%;
 margin:0 auto;
 display:flex;
 justify-content:space-between;
-gap:40px;
+gap:calc(var(--fs-2));
 padding:calc(var(--fs-1)/2) 0;
 }
 
 .contacts-left{font-size:var(--fs-3);color:var(--light-gray)}
+.contacts-title{font-size:var(--fs-2);color:white;margin-bottom:calc(var(--fs-3)/4)}
 
 .footer{
 background:var(--bg-dark);
@@ -127,8 +132,8 @@ justify-content:space-between;
 padding:calc(var(--fs-3)/2);
 }
 
-.footer-title{font-size:var(--fs-3);font-weight:bold;cursor:pointer}
-.footer-sub{color:var(--gray);font-size:var(--fs-5)}
+.footer-title{font-size:var(--fs-2);font-weight:bold;cursor:pointer}
+.footer-sub{color:var(--gray);font-size:var(--fs-4)}
 .footer-right{font-size:var(--fs-3)}
 
 .hero img{width:100%;display:block}
@@ -158,7 +163,7 @@ padding:calc(var(--fs-3)/2);
 <div class="contacts-bg">
 <div class="contacts-inner">
 <div class="contacts-left" id="contacts"></div>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1802.6456979551651!2d57.21910203445122!3d50.28584235377994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4182213fe1551ae7%3A0x7a81e18b996d9b85!2z0JrQsNGA0LDRgdCw0Lkg0JHQsNGC0YvRgNCwIDM3LCDQkNC60YLQvtCx0LU!5e0!3m2!1sru!2skz!4v1774612304130!5m2!1sru!2skz" width="400" height="400" style="border:0;" loading="lazy"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1802.6456979551651!2d57.21910203445122!3d50.28584235377994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4182213fe1551ae7%3A0x7a81e18b996d9b85!2z0JrQsNGA0LDRgdCw0Lkg0JHQsNGC0YvRgNCwIDM3LCDQkNC60YLQvtCx0LU!5e0!3m2!1sru!2skz!4v1774612304130!5m2!1sru!2skz" width="400" height="400" style="border:0;"></iframe>
 </div>
 </div>
 
@@ -178,22 +183,9 @@ subtitle:'Производственно-торговая компания',
 phone:'+7 (775) 331-64-44',
 email:'promresurs-mpga@outlook.com',
 contacts:['КОНТАКТЫ','+7 (775) 331-64-44','promresurs-mpga@outlook.com','Республика Казахстан, г. Актобе, ул. Карасай-Батыра 35, н. п. 2'],
-advantages:[
-'Прямые контракты с производителями',
-'Гарантированное качество поставляемых химических компонентов',
-'Собственные складские мощности',
-'Гибкие условия сотрудничества',
-'Различные виды упаковки и фасовки',
-'Техническая консультация и поддержка',
-'Индивидуальный подход к каждому клиенту',
-'Многоуровневая система контроля качества продукции'
-],
+advantages:['Прямые контракты с производителями','Гарантированное качество поставляемых химических компонентов','Собственные складские мощности','Гибкие условия сотрудничества','Различные виды упаковки и фасовки','Техническая консультация и поддержка','Индивидуальный подход к каждому клиенту','Многоуровневая система контроля качества продукции'],
 blocks:[
 {type:'text',title:'О НАС',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> — производственно-торговая компания, основанная в 2017 году в городе Актобе, Республике Казахстан.<br><br>Компания специализируется на производстве лакокрасочной продукции и строительных материалов, а также на поставке химических компонентов для различных отраслей промышленности.<br><br>Предприятие располагает собственными производственными мощностями и современным оборудованием, что позволяет выпускать широкий ассортимент продукции и поддерживать стабильное качество.<br><br>Одним из ключевых принципов работы компании является строгое соблюдение технологических норм производства, использование сырья от проверенных и надежных поставщиков, а также постоянное совершенствование производственных процессов.<br><br>Благодаря развитию производственной базы и расширению технологических возможностей компания планирует увеличить ассортимент выпускаемой продукции до 500 наименований.`},
-{type:'table',dark:true,title:'МЫ ПРОИЗВОДИМ',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> производит широкий спектр лакокрасочной и строительной продукции, используемой в строительстве, ремонте и промышленности.<br><br>Ассортимент выпускаемой продукции включает несколько основных направлений.`,headers:['Краски','Материалы','Покрытия'],cols:[['Дорожные','Интерьерные','Моющиеся','Потолочные','Универсальные'],['Герметики','Шпатлевки','Наливные полы'],['Бетоноконтакт','Грунтовки','Лаки']]},
-{type:'row',title:'НАША ПРОДУКЦИЯ',items:['Продукт 1','Продукт 2','Продукт 3','Продукт 4']},
-{type:'table',darkAlt:true,title:'МЫ ПОСТАВЛЯЕМ',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> также занимается поставкой химических компонентов для предприятий химической промышленности и производственных компаний.<br><br>Компания обеспечивает стабильные поставки продукции, высокое качество материалов и профессиональную техническую поддержку для своих клиентов.<br><br>Закупка химического сырья осуществляется напрямую у заводов-изготовителей или у официальных дистрибьюторов, что гарантирует надежность и соответствие продукции установленным стандартам.<br><br>В ассортименте поставляемой продукции представлены только проверенные химические компоненты, соответствующие международным требованиям качества.`,headers:['Смолы','Растворители','Пигменты','Добавки','Отвердители и Катализаторы'],cols:[['Акриловые','Алкидные','Виниловые','Полиуретановые','Силиконовые','Эпоксидные'],['Ароматические углеводороды','Вода','Жиры','Кетоны','Масла','Эфиры'],['Антикоррозионные','Минеральные','Неорганические','Органические'],['Адгезионные','Биологические','Диспергирующие','Пенообразующие','Реологические','Функциональные'],['Амины','Изоцианаты','Металлические сиккативы','Пероксиды']]},
-{type:'row',title:'НАШИ ПАРТНЁРЫ',items:['','','','']},
 {type:'advantages',title:'НАШИ ПРЕИМУЩЕСТВА'}
 ]
 }
@@ -215,31 +207,12 @@ root.innerHTML='';
 
 d.blocks.forEach(b=>{
 let wrap=document.createElement('div');
-wrap.className='section-bg '+(b.dark?'dark':b.darkAlt?'dark-alt':'light');
+wrap.className='section-bg light';
 let div=document.createElement('div');
 div.className='section-inner';
 
 let html=`<div class="title-big">${b.title}</div>`;
 if(b.text) html+=`<div class="text">${b.text}</div>`;
-
-if(b.type==='table'){
-html+=`<table class="table ${b.dark?'light-table':'dark-table'}"><tr>`;
-b.headers.forEach(h=>html+=`<th>${h}</th>`);
-html+='</tr>';
-let max=Math.max(...b.cols.map(c=>c.length));
-for(let i=0;i<max;i++){
-html+='<tr>';
-b.cols.forEach(c=>html+=`<td>${c[i]||''}</td>`);
-html+='</tr>';
-}
-html+='</table>';
-}
-
-if(b.type==='row'){
-html+='<div class="row">';
-b.items.forEach(i=>html+=`<div class="item"><div class="img"></div>${i}</div>`);
-html+='</div>';
-}
 
 if(b.type==='advantages'){
 html+='<div class="advantages-list">';
@@ -253,8 +226,7 @@ html+='</div>';
 });
 
 const c=d.contacts;
-document.getElementById('contacts').innerHTML=`<div style='font-weight:bold'>${c[0]}</div><div>${c[1]}</div><div>${c[2]}</div><div>${c[3]}</div>`;
-
+document.getElementById('contacts').innerHTML=`<div class='contacts-title'>${c[0]}</div><div>${c[1]}</div><div>${c[2]}</div><div>${c[3]}</div>`;
 
 document.getElementById('footerTitle').innerHTML=d.title;
 document.getElementById('footerSub').innerHTML=d.subtitle;
@@ -280,7 +252,7 @@ let b=document.getElementById('langBox');
 let arrow=document.getElementById('arrow');
 let open=b.style.display==='block';
 b.style.display=open?'none':'block';
-arrow.innerText=open?'▴':'▾';
+arrow.innerText=open?'▾':'▴';
 }
 
 render();
