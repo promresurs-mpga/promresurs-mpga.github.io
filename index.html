@@ -6,7 +6,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
 <style>
 :root{
---white:#fff;
+--white:#ffffff;
 --light-gray:#e0e0e0;
 --gray:#c0c0c0;
 --bg-light:#004080;
@@ -17,12 +17,15 @@
 --fs-3:30px;
 --fs-4:22.5px;
 --fs-5:15px;
+
+--border-thick:calc(var(--fs-3)/8);
+--border-thicker:calc(var(--fs-2)/8);
 }
 
 *{box-sizing:border-box}
 body{margin:0;font-family:'Ubuntu Condensed',sans-serif}
 
-.clickable,.lang-box div,.item,img{transition:all .25s ease}
+.clickable,.lang-item{transition:all .25s ease}
 
 .header{
 background:var(--bg-light);
@@ -38,67 +41,52 @@ padding:calc(var(--fs-1)/8);
 
 .header-right{display:flex;align-items:center;gap:calc(var(--fs-3)/2);font-size:var(--fs-3)}
 
-.clickable{cursor:pointer}
-.clickable:hover{color:var(--bg-dark)}
-
-.icon{width:30px;height:30px}
-.icon:hover{filter:brightness(0.7)}
-
-.lang{position:relative}
+.lang{position:relative;cursor:pointer}
 
 .lang-box{
 display:none;
 position:absolute;
 right:0;
-background:var(--bg-dark);
+background:var(--white);
+border:2px solid var(--bg-light);
 min-width:120px;
-border:1px solid var(--white);
 }
 
 .lang-item{
-display:flex;
-align-items:center;
-gap:8px;
 padding:10px;
-cursor:pointer;
+text-align:center;
 }
 
-.lang-item:hover{background:var(--bg-light)}
+.lang-item.active{background:var(--bg-light);color:white;pointer-events:none}
+.lang-item:hover:not(.active){background:var(--bg-dark);color:white}
 
-.active-lang{
-color:var(--gray);
-pointer-events:none;
-}
-
-.section{
-max-width:1200px;
+.section-bg{width:100%}
+.section-inner{
+max-width:75%;
 margin:0 auto;
-padding:calc(var(--fs-1)/2) calc(var(--fs-3)/2);
+padding:calc(var(--fs-1)/2) 0;
+text-align:center;
 }
 
 .light{background:var(--white);color:var(--bg-light)}
 .dark{background:var(--bg-light);color:var(--white)}
 .dark-alt{background:var(--bg-dark);color:var(--white)}
 
-.title-big{font-size:var(--fs-1);font-weight:bold;text-align:center}
+.title-big{font-size:var(--fs-1);font-weight:bold}
 
 .text{
 font-size:var(--fs-3);
 margin:calc(var(--fs-3)/4) 0;
 line-height:1.5;
+text-align:center;
 }
 
-.table{
-width:100%;
-margin:calc(var(--fs-3)/2) 0;
-border-collapse:collapse;
-}
-
+.table{width:100%;border-collapse:collapse;margin-top:calc(var(--fs-3)/2)}
 .table th,.table td{
 padding:calc(var(--fs-5));
 text-align:center;
 background:white;
-border:2px solid;
+border:var(--border-thick) solid;
 }
 
 .table th{font-size:var(--fs-3)}
@@ -110,23 +98,28 @@ border:2px solid;
 .dark-table th{background:var(--bg-light);color:white;border-color:var(--bg-dark)}
 .dark-table td{color:var(--bg-light);border-color:var(--bg-dark)}
 
-.row{display:flex;gap:calc(var(--fs-3));flex-wrap:wrap;margin-top:calc(var(--fs-3))}
+.row{display:flex;justify-content:center;gap:calc(var(--fs-3));flex-wrap:wrap;margin-top:calc(var(--fs-3))}
 .item{font-size:var(--fs-3)}
 .img{width:150px;height:150px;background:var(--gray);margin-bottom:calc(var(--fs-5))}
 
-.contacts{
-background:var(--bg-light);
-color:white;
+.advantages-list{margin-top:calc(var(--fs-3));}
+.adv-item{
+font-size:var(--fs-2);
+padding:calc(var(--fs-4)/2) 0;
+border-bottom:var(--border-thicker) solid var(--bg-light);
+}
+
+.contacts-bg{background:var(--bg-light)}
+.contacts-inner{
+max-width:75%;
+margin:0 auto;
 display:flex;
 justify-content:space-between;
 gap:40px;
-padding:calc(var(--fs-1)/2);
+padding:calc(var(--fs-1)/2) 0;
 }
 
-.contacts-left{max-width:500px}
-.contacts-title{font-size:var(--fs-1);color:white;font-weight:bold}
-.contacts-name{color:var(--light-gray);font-size:var(--fs-3);font-weight:bold;margin-top:10px}
-.contacts-text{color:var(--gray);font-size:var(--fs-3);margin-top:10px}
+.contacts-left{font-size:var(--fs-3);color:var(--light-gray)}
 
 .footer{
 background:var(--bg-dark);
@@ -137,11 +130,9 @@ padding:calc(var(--fs-3)/2);
 }
 
 .footer-title{font-size:var(--fs-2);font-weight:bold}
-.footer-right{display:flex;flex-direction:column;gap:10px;font-size:var(--fs-3)}
+.footer-right{font-size:var(--fs-3)}
 
-.footer-icons{display:flex;gap:10px}
-
-.footer .icon:hover{filter:brightness(1.4)}
+.hero img{width:100%;display:block}
 </style>
 </head>
 <body>
@@ -151,27 +142,22 @@ padding:calc(var(--fs-3)/2);
 <div class="title" id="title"></div>
 <div class="subtitle" id="subtitle"></div>
 </div>
-
 <div class="header-right">
 <div id="phone"></div>
 <div id="email"></div>
-
-<a href="https://wa.me/77753316444" target="_blank">
-<img class="icon clickable" src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-</a>
-
-<div class="lang clickable" onclick="toggleLang()">
-<span id="currentLang">РУС</span> <span id="arrow">▼</span>
+<div class="lang" onclick="toggleLang()">
+<span id="currentLang">РУС</span> <span id="arrow">▾</span>
 <div class="lang-box" id="langBox"></div>
 </div>
 </div>
 </div>
 
+<div class="hero"><img src="banner.jpg"></div>
+
 <div id="content"></div>
 
-<div class="contacts">
-<div class="contacts-left" id="contacts"></div>
-<iframe src="https://maps.google.com/maps?q=Aktobe&t=&z=13&output=embed" width="50%" height="300"></iframe>
+<div class="contacts-bg">
+<div class="contacts-inner" id="contacts"></div>
 </div>
 
 <div class="footer">
@@ -186,49 +172,33 @@ title:'ТОО «ПРОМРЕСУРС MPGA»',
 subtitle:'Производственно-торговая компания',
 phone:'+7 (775) 331-64-44',
 email:'promresurs-mpga@outlook.com',
-contacts:{
-name:'ТОО «ПРОМРЕСУРС MPGA»',
-phone:'+7 (775) 331-64-44',
-email:'promresurs-mpga@outlook.com',
-address:'Республика Казахстан, г. Актобе, ул. Карасай-Батыра 35, н. п. 2'
-},
+contacts:['+7 (775) 331-64-44','promresurs-mpga@outlook.com','Республика Казахстан, г. Актобе, ул. Карасай-Батыра 35, н. п. 2'],
+advantages:[
+'Прямые контракты с производителями',
+'Гарантированное качество поставляемых химических компонентов',
+'Собственные складские мощности',
+'Гибкие условия сотрудничества',
+'Различные виды упаковки и фасовки',
+'Техническая консультация и поддержка',
+'Индивидуальный подход к каждому клиенту',
+'Многоуровневая система контроля качества продукции'
+],
 blocks:[
-{type:'text',title:'О НАС',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> — производственно-торговая компания, основанная в 2017 году в городе Актобе, Республике Казахстан.
-
-Компания специализируется на производстве лакокрасочной продукции и строительных материалов, а также на поставке химических компонентов для различных отраслей промышленности.
-
-Предприятие располагает собственными производственными мощностями и современным оборудованием.
-
-Компания планирует увеличить ассортимент до 500 наименований.`},
-
-{type:'table',dark:true,title:'МЫ ПРОИЗВОДИМ',text:'',headers:['Краски','Материалы','Покрытия'],cols:[
-['Дорожные','Интерьерные','Моющиеся','Потолочные','Универсальные'],
-['Герметики','Шпатлевки','Наливные полы'],
-['Бетоноконтакт','Грунтовки','Лаки']
-]},
-
+{type:'text',title:'О НАС',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> — производственно-торговая компания, основанная в 2017 году в городе Актобе, Республике Казахстан.<br><br>Компания специализируется на производстве лакокрасочной продукции и строительных материалов, а также на поставке химических компонентов для различных отраслей промышленности.<br><br>Предприятие располагает собственными производственными мощностями и современным оборудованием.<br><br>Одним из ключевых принципов работы компании является строгое соблюдение технологических норм производства.<br><br>Компания планирует увеличить ассортимент до 500 наименований.`},
+{type:'table',dark:true,title:'МЫ ПРОИЗВОДИМ',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> производит широкий спектр продукции.<br><br>Ассортимент включает направления.`,headers:['Краски','Материалы','Покрытия'],cols:[['Дорожные','Интерьерные','Моющиеся','Потолочные','Универсальные'],['Герметики','Шпатлевки','Наливные полы'],['Бетоноконтакт','Грунтовки','Лаки']]},
 {type:'row',title:'НАША ПРОДУКЦИЯ',items:['Продукт 1','Продукт 2','Продукт 3','Продукт 4']},
-
-{type:'table',darkAlt:true,title:'МЫ ПОСТАВЛЯЕМ',headers:['Смолы','Растворители','Пигменты','Добавки','Отвердители и Катализаторы'],cols:[
-['Акриловые','Алкидные','Виниловые','Полиуретановые','Силиконовые','Эпоксидные'],
-['Ароматические углеводороды','Вода','Жиры','Кетоны','Масла','Эфиры'],
-['Антикоррозионные','Минеральные','Неорганические','Органические'],
-['Адгезионные','Биологические','Диспергирующие','Пенообразующие','Реологические','Функциональные'],
-['Амины','Изоцианаты','Металлические сиккативы','Пероксиды']
-]},
-
-{type:'row',title:'НАШИ ПАРТНЁРЫ',items:['','','','']}
+{type:'table',darkAlt:true,title:'МЫ ПОСТАВЛЯЕМ',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> занимается поставкой химических компонентов.<br><br>Обеспечивает стабильные поставки и качество.`,headers:['Смолы','Растворители','Пигменты','Добавки','Отвердители и Катализаторы'],cols:[['Акриловые','Алкидные','Виниловые','Полиуретановые','Силиконовые','Эпоксидные'],['Ароматические углеводороды','Вода','Жиры','Кетоны','Масла','Эфиры'],['Антикоррозионные','Минеральные','Неорганические','Органические'],['Адгезионные','Биологические','Диспергирующие','Пенообразующие','Реологические','Функциональные'],['Амины','Изоцианаты','Металлические сиккативы','Пероксиды']]},
+{type:'row',title:'НАШИ ПАРТНЁРЫ',items:['','','','']},
+{type:'advantages',title:'НАШИ ПРЕИМУЩЕСТВА'}
 ]
 },
-
-en:{title:'PROMRESURS MPGA LLP',subtitle:'Manufacturing and trading company',phone:'+7 (775) 331-64-44',email:'promresurs-mpga@outlook.com',contacts:{name:'PROMRESURS MPGA LLP',phone:'+7 (775) 331-64-44',email:'promresurs-mpga@outlook.com',address:'Kazakhstan, Aktobe'} ,blocks:[]}
+en:{title:'PROMRESURS MPGA LLP',subtitle:'Manufacturing and trading company',phone:'+7 (775) 331-64-44',email:'promresurs-mpga@outlook.com',contacts:['+7 (775) 331-64-44','promresurs-mpga@outlook.com','Aktobe, Kazakhstan'],advantages:['Direct contracts','Guaranteed quality','Own warehouses','Flexible cooperation','Packaging options','Technical support','Individual approach','Quality control'],blocks:[]}
 };
 
 let lang='ru';
 
 function render(){
 const d=DATA[lang];
-
 document.getElementById('title').innerHTML=d.title;
 document.getElementById('subtitle').innerHTML=d.subtitle;
 document.getElementById('phone').innerHTML=d.phone;
@@ -238,11 +208,12 @@ const root=document.getElementById('content');
 root.innerHTML='';
 
 d.blocks.forEach(b=>{
+let wrap=document.createElement('div');
+wrap.className='section-bg '+(b.dark?'dark':b.darkAlt?'dark-alt':'light');
 let div=document.createElement('div');
-div.className='section '+(b.dark?'dark':b.darkAlt?'dark-alt':'light');
+div.className='section-inner';
 
 let html=`<div class="title-big">${b.title}</div>`;
-
 if(b.text) html+=`<div class="text">${b.text}</div>`;
 
 if(b.type==='table'){
@@ -260,26 +231,26 @@ html+='</table>';
 
 if(b.type==='row'){
 html+='<div class="row">';
-b.items.forEach(i=>html+=`<div class="item clickable"><div class="img"></div>${i}</div>`);
+b.items.forEach(i=>html+=`<div class="item"><div class="img"></div>${i}</div>`);
 html+='</div>';
 }
 
-div.innerHTML=html;
-root.appendChild(div);
+if(b.type==='advantages'){
+html+='<div class="advantages-list">';
+d.advantages.forEach(a=>html+=`<div class="adv-item">${a}</div>`);
+html+='</div>';
+}
+
+ div.innerHTML=html;
+ wrap.appendChild(div);
+ root.appendChild(wrap);
 });
 
 const c=d.contacts;
-document.getElementById('contacts').innerHTML=`
-<div class="contacts-title">КОНТАКТЫ</div>
-<div class="contacts-name">${c.name}</div>
-<div class="contacts-text">${c.phone}</div>
-<div class="contacts-text">${c.email}</div>
-<div class="contacts-text">${c.address}</div>`;
-
-const footerRight=document.getElementById('footerRight');
-footerRight.innerHTML=`${d.phone}<br>${d.email}<div class='footer-icons'><a href='https://wa.me/77753316444'><img class='icon' src='https://cdn-icons-png.flaticon.com/512/733/733585.png'></a></div>`;
+document.getElementById('contacts').innerHTML=`<div><div>${c[0]}</div><div>${c[1]}</div><div>${c[2]}</div></div><iframe src="https://maps.google.com/maps?q=Aktobe&t=&z=13&output=embed" width="50%" height="300"></iframe>`;
 
 document.getElementById('footerTitle').innerHTML=d.title;
+document.getElementById('footerRight').innerHTML=`${d.phone}<br>${d.email}`;
 
 renderLang();
 }
@@ -289,9 +260,9 @@ const box=document.getElementById('langBox');
 box.innerHTML='';
 ['ru','en'].forEach(l=>{
 let div=document.createElement('div');
-div.className='lang-item'+(l===lang?' active-lang':'');
-div.innerHTML=(l==='ru'?'🇷🇺 РУС':'🇬🇧 ENG');
-if(l!==lang) div.onclick=()=>{lang=l;document.getElementById('currentLang').innerText=l==='ru'?'РУС':'ENG';toggleLang();render()};
+div.className='lang-item'+(l===lang?' active':'');
+div.innerText=l==='ru'?'РУС':'ENG';
+if(l!==lang) div.onclick=()=>{lang=l;document.getElementById('currentLang').innerText=div.innerText;toggleLang();render()};
 box.appendChild(div);
 });
 }
@@ -301,7 +272,7 @@ let b=document.getElementById('langBox');
 let arrow=document.getElementById('arrow');
 let open=b.style.display==='block';
 b.style.display=open?'none':'block';
-arrow.innerText=open?'▼':'▲';
+arrow.innerText=open?'▴':'▾';
 }
 
 render();
