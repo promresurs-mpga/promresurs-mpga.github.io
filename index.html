@@ -17,9 +17,6 @@
 --fs-3:30px;
 --fs-4:22.5px;
 --fs-5:15px;
-
---border-thick:calc(var(--fs-3)/8);
---border-thicker:calc(var(--fs-2)/8);
 }
 
 *{box-sizing:border-box}
@@ -36,7 +33,7 @@ align-items:center;
 padding:calc(var(--fs-1)/8);
 }
 
-.title{font-size:var(--fs-1);font-weight:bold}
+.title{font-size:var(--fs-1);font-weight:bold;cursor:pointer}
 .subtitle{font-size:var(--fs-3);color:var(--gray);margin-top:calc(var(--fs-3)/8)}
 
 .header-right{display:flex;align-items:center;gap:calc(var(--fs-3)/2);font-size:var(--fs-3)}
@@ -72,12 +69,12 @@ text-align:center;
 .dark{background:var(--bg-light);color:var(--white)}
 .dark-alt{background:var(--bg-dark);color:var(--white)}
 
-.title-big{font-size:var(--fs-1);font-weight:bold}
+.title-big{font-size:var(--fs-1);font-weight:bold;margin-bottom:calc(var(--fs-1)/4)}
 
 .text{
 font-size:var(--fs-3);
-margin:calc(var(--fs-3)/4) 0;
-line-height:1.5;
+margin-top:calc(var(--fs-2)/4);
+line-height:1.6;
 text-align:center;
 }
 
@@ -86,7 +83,8 @@ text-align:center;
 padding:calc(var(--fs-5));
 text-align:center;
 background:white;
-border:var(--border-thick) solid;
+border:4px solid;
+font-style:normal;
 }
 
 .table th{font-size:var(--fs-3)}
@@ -104,9 +102,9 @@ border:var(--border-thick) solid;
 
 .advantages-list{margin-top:calc(var(--fs-3));}
 .adv-item{
-font-size:var(--fs-2);
-padding:calc(var(--fs-4)/2) 0;
-border-bottom:var(--border-thicker) solid var(--bg-light);
+font-size:var(--fs-3);
+padding:15px 0;
+border-bottom:6px solid var(--bg-light);
 }
 
 .contacts-bg{background:var(--bg-light)}
@@ -129,7 +127,8 @@ justify-content:space-between;
 padding:calc(var(--fs-3)/2);
 }
 
-.footer-title{font-size:var(--fs-2);font-weight:bold}
+.footer-title{font-size:var(--fs-3);font-weight:bold;cursor:pointer}
+.footer-sub{color:var(--gray);font-size:var(--fs-5)}
 .footer-right{font-size:var(--fs-3)}
 
 .hero img{width:100%;display:block}
@@ -139,12 +138,12 @@ padding:calc(var(--fs-3)/2);
 
 <div class="header">
 <div>
-<div class="title" id="title"></div>
+<div class="title" id="title" onclick="scrollToTop()"></div>
 <div class="subtitle" id="subtitle"></div>
 </div>
 <div class="header-right">
-<div id="phone"></div>
-<div id="email"></div>
+<div class="clickable" id="phone"></div>
+<div class="clickable" id="email"></div>
 <div class="lang" onclick="toggleLang()">
 <span id="currentLang">РУС</span> <span id="arrow">▾</span>
 <div class="lang-box" id="langBox"></div>
@@ -152,16 +151,22 @@ padding:calc(var(--fs-3)/2);
 </div>
 </div>
 
-<div class="hero"><img src="banner.jpg"></div>
+<div class="hero"><img src="images/banner.jpg"></div>
 
 <div id="content"></div>
 
 <div class="contacts-bg">
-<div class="contacts-inner" id="contacts"></div>
+<div class="contacts-inner">
+<div class="contacts-left" id="contacts"></div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1802.6456979551651!2d57.21910203445122!3d50.28584235377994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4182213fe1551ae7%3A0x7a81e18b996d9b85!2z0JrQsNGA0LDRgdCw0Lkg0JHQsNGC0YvRgNCwIDM3LCDQkNC60YLQvtCx0LU!5e0!3m2!1sru!2skz!4v1774612304130!5m2!1sru!2skz" width="400" height="400" style="border:0;" loading="lazy"></iframe>
+</div>
 </div>
 
 <div class="footer">
-<div class="footer-title" id="footerTitle"></div>
+<div>
+<div class="footer-title" id="footerTitle" onclick="scrollToTop()"></div>
+<div class="footer-sub" id="footerSub"></div>
+</div>
 <div class="footer-right" id="footerRight"></div>
 </div>
 
@@ -172,7 +177,7 @@ title:'ТОО «ПРОМРЕСУРС MPGA»',
 subtitle:'Производственно-торговая компания',
 phone:'+7 (775) 331-64-44',
 email:'promresurs-mpga@outlook.com',
-contacts:['+7 (775) 331-64-44','promresurs-mpga@outlook.com','Республика Казахстан, г. Актобе, ул. Карасай-Батыра 35, н. п. 2'],
+contacts:['КОНТАКТЫ','+7 (775) 331-64-44','promresurs-mpga@outlook.com','Республика Казахстан, г. Актобе, ул. Карасай-Батыра 35, н. п. 2'],
 advantages:[
 'Прямые контракты с производителями',
 'Гарантированное качество поставляемых химических компонентов',
@@ -184,25 +189,26 @@ advantages:[
 'Многоуровневая система контроля качества продукции'
 ],
 blocks:[
-{type:'text',title:'О НАС',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> — производственно-торговая компания, основанная в 2017 году в городе Актобе, Республике Казахстан.<br><br>Компания специализируется на производстве лакокрасочной продукции и строительных материалов, а также на поставке химических компонентов для различных отраслей промышленности.<br><br>Предприятие располагает собственными производственными мощностями и современным оборудованием.<br><br>Одним из ключевых принципов работы компании является строгое соблюдение технологических норм производства.<br><br>Компания планирует увеличить ассортимент до 500 наименований.`},
-{type:'table',dark:true,title:'МЫ ПРОИЗВОДИМ',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> производит широкий спектр продукции.<br><br>Ассортимент включает направления.`,headers:['Краски','Материалы','Покрытия'],cols:[['Дорожные','Интерьерные','Моющиеся','Потолочные','Универсальные'],['Герметики','Шпатлевки','Наливные полы'],['Бетоноконтакт','Грунтовки','Лаки']]},
+{type:'text',title:'О НАС',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> — производственно-торговая компания, основанная в 2017 году в городе Актобе, Республике Казахстан.<br><br>Компания специализируется на производстве лакокрасочной продукции и строительных материалов, а также на поставке химических компонентов для различных отраслей промышленности.<br><br>Предприятие располагает собственными производственными мощностями и современным оборудованием, что позволяет выпускать широкий ассортимент продукции и поддерживать стабильное качество.<br><br>Одним из ключевых принципов работы компании является строгое соблюдение технологических норм производства, использование сырья от проверенных и надежных поставщиков, а также постоянное совершенствование производственных процессов.<br><br>Благодаря развитию производственной базы и расширению технологических возможностей компания планирует увеличить ассортимент выпускаемой продукции до 500 наименований.`},
+{type:'table',dark:true,title:'МЫ ПРОИЗВОДИМ',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> производит широкий спектр лакокрасочной и строительной продукции, используемой в строительстве, ремонте и промышленности.<br><br>Ассортимент выпускаемой продукции включает несколько основных направлений.`,headers:['Краски','Материалы','Покрытия'],cols:[['Дорожные','Интерьерные','Моющиеся','Потолочные','Универсальные'],['Герметики','Шпатлевки','Наливные полы'],['Бетоноконтакт','Грунтовки','Лаки']]},
 {type:'row',title:'НАША ПРОДУКЦИЯ',items:['Продукт 1','Продукт 2','Продукт 3','Продукт 4']},
-{type:'table',darkAlt:true,title:'МЫ ПОСТАВЛЯЕМ',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> занимается поставкой химических компонентов.<br><br>Обеспечивает стабильные поставки и качество.`,headers:['Смолы','Растворители','Пигменты','Добавки','Отвердители и Катализаторы'],cols:[['Акриловые','Алкидные','Виниловые','Полиуретановые','Силиконовые','Эпоксидные'],['Ароматические углеводороды','Вода','Жиры','Кетоны','Масла','Эфиры'],['Антикоррозионные','Минеральные','Неорганические','Органические'],['Адгезионные','Биологические','Диспергирующие','Пенообразующие','Реологические','Функциональные'],['Амины','Изоцианаты','Металлические сиккативы','Пероксиды']]},
+{type:'table',darkAlt:true,title:'МЫ ПОСТАВЛЯЕМ',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> также занимается поставкой химических компонентов для предприятий химической промышленности и производственных компаний.<br><br>Компания обеспечивает стабильные поставки продукции, высокое качество материалов и профессиональную техническую поддержку для своих клиентов.<br><br>Закупка химического сырья осуществляется напрямую у заводов-изготовителей или у официальных дистрибьюторов, что гарантирует надежность и соответствие продукции установленным стандартам.<br><br>В ассортименте поставляемой продукции представлены только проверенные химические компоненты, соответствующие международным требованиям качества.`,headers:['Смолы','Растворители','Пигменты','Добавки','Отвердители и Катализаторы'],cols:[['Акриловые','Алкидные','Виниловые','Полиуретановые','Силиконовые','Эпоксидные'],['Ароматические углеводороды','Вода','Жиры','Кетоны','Масла','Эфиры'],['Антикоррозионные','Минеральные','Неорганические','Органические'],['Адгезионные','Биологические','Диспергирующие','Пенообразующие','Реологические','Функциональные'],['Амины','Изоцианаты','Металлические сиккативы','Пероксиды']]},
 {type:'row',title:'НАШИ ПАРТНЁРЫ',items:['','','','']},
 {type:'advantages',title:'НАШИ ПРЕИМУЩЕСТВА'}
 ]
-},
-en:{title:'PROMRESURS MPGA LLP',subtitle:'Manufacturing and trading company',phone:'+7 (775) 331-64-44',email:'promresurs-mpga@outlook.com',contacts:['+7 (775) 331-64-44','promresurs-mpga@outlook.com','Aktobe, Kazakhstan'],advantages:['Direct contracts','Guaranteed quality','Own warehouses','Flexible cooperation','Packaging options','Technical support','Individual approach','Quality control'],blocks:[]}
+}
 };
 
 let lang='ru';
+
+function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'})}
 
 function render(){
 const d=DATA[lang];
 document.getElementById('title').innerHTML=d.title;
 document.getElementById('subtitle').innerHTML=d.subtitle;
-document.getElementById('phone').innerHTML=d.phone;
-document.getElementById('email').innerHTML=d.email;
+document.getElementById('phone').innerHTML=`<a href='tel:${d.phone}'>${d.phone}</a>`;
+document.getElementById('email').innerHTML=`<a href='mailto:${d.email}'>${d.email}</a>`;
 
 const root=document.getElementById('content');
 root.innerHTML='';
@@ -247,10 +253,12 @@ html+='</div>';
 });
 
 const c=d.contacts;
-document.getElementById('contacts').innerHTML=`<div><div>${c[0]}</div><div>${c[1]}</div><div>${c[2]}</div></div><iframe src="https://maps.google.com/maps?q=Aktobe&t=&z=13&output=embed" width="50%" height="300"></iframe>`;
+document.getElementById('contacts').innerHTML=`<div style='font-weight:bold'>${c[0]}</div><div>${c[1]}</div><div>${c[2]}</div><div>${c[3]}</div>`;
+
 
 document.getElementById('footerTitle').innerHTML=d.title;
-document.getElementById('footerRight').innerHTML=`${d.phone}<br>${d.email}`;
+document.getElementById('footerSub').innerHTML=d.subtitle;
+document.getElementById('footerRight').innerHTML=`<a href='tel:${d.phone}'>${d.phone}</a><br><a href='mailto:${d.email}'>${d.email}</a><br>${c[3]}`;
 
 renderLang();
 }
