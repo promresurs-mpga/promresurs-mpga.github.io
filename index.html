@@ -6,7 +6,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
 <style>
 :root{
---white:#ffffff;
+--white:#fff;
 --light-gray:#e0e0e0;
 --gray:#c0c0c0;
 --bg-light:#004080;
@@ -18,158 +18,102 @@
 --fs-4:22.5px;
 --fs-5:15px;
 }
-
 *{box-sizing:border-box}
 body{margin:0;font-family:'Ubuntu Condensed',sans-serif}
-
 a{color:inherit;text-decoration:none}
-.clickable{transition:.25s}
-.clickable:hover{color:var(--bg-light)}
 
-.header{
-background:var(--bg-light);
-color:var(--white);
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:calc(var(--fs-1)/8);
-}
-
-.header>div:first-child{margin-left:calc(var(--fs-1)/4)}
-
+.header{background:var(--bg-light);color:var(--white);display:flex;justify-content:space-between;align-items:center;padding:calc(var(--fs-1)/8)}
+.header-left{margin-left:calc(var(--fs-1)/4)}
 .title{font-size:var(--fs-1);font-weight:bold;cursor:pointer}
 .subtitle{font-size:var(--fs-3);color:var(--gray);margin-top:calc(var(--fs-3)/8)}
 
 .header-right{display:flex;align-items:center;gap:calc(var(--fs-3)/2);font-size:var(--fs-3)}
+.header-right div{padding:calc(var(--fs-5)/2);cursor:pointer;transition:.25s}
+.header-right div:hover{background:var(--bg-dark)}
+.divider{width:2px;height:var(--fs-3);background:var(--white)}
 
-.lang{position:relative;cursor:pointer}
-
-.lang-box{
-display:none;
-position:absolute;
-right:0;
-background:var(--white);
-border:calc(var(--fs-5)/2) solid var(--bg-light);
-min-width:calc(var(--fs-1)*1.5);
-}
-
-.lang-item{
-padding:calc(var(--fs-5));
-text-align:center;
-color:var(--bg-light);
-}
-
-.lang-item.active{background:var(--bg-dark);color:var(--gray);pointer-events:none}
+.lang{position:relative}
+.lang-box{display:none;position:absolute;right:0;background:var(--white);border:calc(var(--fs-5)/4) solid var(--bg-dark)}
+.lang-item{padding:calc(var(--fs-5));color:var(--bg-light);text-align:center}
+.lang-item.active{background:var(--bg-dark);color:var(--gray)}
 .lang-item:hover:not(.active){background:var(--bg-light);color:white}
 
 .section-bg{width:100%}
-.section-inner{
-max-width:75%;
-margin:0 auto;
-padding:calc(var(--fs-1)/2) 0;
-text-align:center;
-}
+.section-inner{max-width:75%;margin:0 auto;padding:calc(var(--fs-1)/2) 0;text-align:center}
 
 .light{background:var(--white);color:var(--bg-light)}
 .dark{background:var(--bg-light);color:var(--white)}
 .dark-alt{background:var(--bg-dark);color:var(--white)}
 
 .title-big{font-size:var(--fs-1);font-weight:bold;margin-bottom:calc(var(--fs-1)/4)}
-
-.text{
-font-size:var(--fs-3);
-margin-top:calc(var(--fs-2)/4);
-line-height:1.6;
-text-align:center;
-}
+.text{font-size:var(--fs-3);margin-top:calc(var(--fs-2)/4);line-height:1.6}
 
 .table{width:100%;border-collapse:collapse;margin-top:calc(var(--fs-3)/2)}
-.table th,.table td{
-padding:calc(var(--fs-5));
-text-align:center;
-background:white;
-border:calc(var(--fs-3)/8) solid;
-}
-
+.table th,.table td{border:calc(var(--fs-3)/8) solid;padding:calc(var(--fs-5));background:white;text-align:center}
 .table th{font-size:var(--fs-3)}
 .table td{font-size:var(--fs-4)}
-
 .light-table th{background:var(--bg-dark);color:white;border-color:var(--bg-light)}
 .light-table td{color:var(--bg-dark);border-color:var(--bg-light)}
-
 .dark-table th{background:var(--bg-light);color:white;border-color:var(--bg-dark)}
 .dark-table td{color:var(--bg-light);border-color:var(--bg-dark)}
 
-.row{display:flex;justify-content:center;gap:calc(var(--fs-3));flex-wrap:wrap;margin-top:calc(var(--fs-3))}
-.item{font-size:var(--fs-3)}
-.img{width:150px;height:150px;background:var(--gray);margin-bottom:calc(var(--fs-5))}
+.row{display:flex;flex-wrap:wrap;justify-content:center;gap:calc(var(--fs-3));margin-top:calc(var(--fs-3))}
+.img{width:150px;height:150px;background:var(--gray)}
 
-.advantages-list{margin-top:calc(var(--fs-3));}
-.adv-item{
-font-size:var(--fs-3);
-padding:calc(var(--fs-4)/2) 0;
-border-bottom:calc(var(--fs-2)/16) solid var(--bg-light);
-}
+.partners{display:flex;flex-wrap:wrap;gap:calc(var(--fs-3));justify-content:center;margin-top:calc(var(--fs-3))}
+.partner-img{max-height:100px}
+
+.advantages-list{margin-top:calc(var(--fs-3))}
+.adv-item{font-size:var(--fs-3);padding:calc(var(--fs-4)/2) 0;border-top:calc(var(--fs-2)/16) solid var(--bg-light)}
 
 .contacts-bg{background:var(--bg-light)}
-.contacts-inner{
-max-width:75%;
-margin:0 auto;
-display:flex;
-justify-content:space-between;
-gap:calc(var(--fs-2));
-padding:calc(var(--fs-1)/2) 0;
-}
-
+.contacts-inner{max-width:75%;margin:0 auto;display:flex;justify-content:space-between;gap:calc(var(--fs-2));padding:calc(var(--fs-1)/2) 0}
 .contacts-left{font-size:var(--fs-3);color:var(--light-gray)}
-.contacts-title{font-size:var(--fs-2);color:white;margin-bottom:calc(var(--fs-3)/4)}
+.contacts-left div{margin-top:calc(var(--fs-3))}
+.contacts-title{font-size:var(--fs-2);color:white;font-weight:bold}
+.contacts-left div:hover{background:var(--bg-dark)}
 
-.footer{
-background:var(--bg-dark);
-color:white;
-display:flex;
-justify-content:space-between;
-padding:calc(var(--fs-3)/2);
-}
-
+.footer{background:var(--bg-dark);color:white;display:flex;justify-content:space-between;padding:calc(var(--fs-3)/2)}
 .footer-title{font-size:var(--fs-2);font-weight:bold;cursor:pointer}
-.footer-sub{color:var(--gray);font-size:var(--fs-4)}
-.footer-right{font-size:var(--fs-3)}
+.footer-sub{color:var(--gray);font-size:var(--fs-3)}
+.footer-right{font-size:var(--fs-4)}
+.footer-right div:hover{color:var(--bg-light)}
 
-.hero img{width:100%;display:block}
+.hero img{width:100%}
 </style>
 </head>
 <body>
 
 <div class="header">
-<div>
-<div class="title" id="title" onclick="scrollToTop()"></div>
+<div class="header-left">
+<div class="title" onclick="scrollToTop()" id="title"></div>
 <div class="subtitle" id="subtitle"></div>
 </div>
 <div class="header-right">
-<div class="clickable" id="phone"></div>
-<div class="clickable" id="email"></div>
+<div id="phone"></div>
+<div class="divider"></div>
+<div id="email"></div>
+<div class="divider"></div>
 <div class="lang" onclick="toggleLang()">
-<span id="currentLang">РУС</span> <span id="arrow">▾</span>
+<span id="currentLang">РУС</span> ▾
 <div class="lang-box" id="langBox"></div>
 </div>
 </div>
 </div>
 
 <div class="hero"><img src="images/banner.jpg"></div>
-
 <div id="content"></div>
 
 <div class="contacts-bg">
 <div class="contacts-inner">
 <div class="contacts-left" id="contacts"></div>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1802.6456979551651!2d57.21910203445122!3d50.28584235377994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4182213fe1551ae7%3A0x7a81e18b996d9b85!2z0JrQsNGA0LDRgdCw0Lkg0JHQsNGC0YvRgNCwIDM3LCDQkNC60YLQvtCx0LU!5e0!3m2!1sru!2skz!4v1774612304130!5m2!1sru!2skz" width="400" height="400" style="border:0;"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1802.6456979551651!2d57.21910203445122!3d50.28584235377994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4182213fe1551ae7%3A0x7a81e18b996d9b85!2z0JrQsNGA0LDRgdCw0Lkg0JHQsNGC0YvRgNCwIDM3LCDQkNC60YLQvtCx0LU!5e0!3m2!1sru!2skz!4v1774612304130!5m2!1sru!2skz" width="500" height="500" style="border:0"></iframe>
 </div>
 </div>
 
 <div class="footer">
 <div>
-<div class="footer-title" id="footerTitle" onclick="scrollToTop()"></div>
+<div class="footer-title" onclick="scrollToTop()" id="footerTitle"></div>
 <div class="footer-sub" id="footerSub"></div>
 </div>
 <div class="footer-right" id="footerRight"></div>
@@ -184,8 +128,10 @@ phone:'+7 (775) 331-64-44',
 email:'promresurs-mpga@outlook.com',
 contacts:['КОНТАКТЫ','+7 (775) 331-64-44','promresurs-mpga@outlook.com','Республика Казахстан, г. Актобе, ул. Карасай-Батыра 35, н. п. 2'],
 advantages:['Прямые контракты с производителями','Гарантированное качество поставляемых химических компонентов','Собственные складские мощности','Гибкие условия сотрудничества','Различные виды упаковки и фасовки','Техническая консультация и поддержка','Индивидуальный подход к каждому клиенту','Многоуровневая система контроля качества продукции'],
+partners:['partner_basf.png','partner_dow.png','partner_kraton.png'],
 blocks:[
 {type:'text',title:'О НАС',text:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> — производственно-торговая компания, основанная в 2017 году в городе Актобе, Республике Казахстан.<br><br>Компания специализируется на производстве лакокрасочной продукции и строительных материалов, а также на поставке химических компонентов для различных отраслей промышленности.<br><br>Предприятие располагает собственными производственными мощностями и современным оборудованием, что позволяет выпускать широкий ассортимент продукции и поддерживать стабильное качество.<br><br>Одним из ключевых принципов работы компании является строгое соблюдение технологических норм производства, использование сырья от проверенных и надежных поставщиков, а также постоянное совершенствование производственных процессов.<br><br>Благодаря развитию производственной базы и расширению технологических возможностей компания планирует увеличить ассортимент выпускаемой продукции до 500 наименований.`},
+{type:'partners',title:'НАШИ ПАРТНЁРЫ'},
 {type:'advantages',title:'НАШИ ПРЕИМУЩЕСТВА'}
 ]
 }
@@ -196,23 +142,34 @@ let lang='ru';
 function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'})}
 
 function render(){
-const d=DATA[lang];
-document.getElementById('title').innerHTML=d.title;
-document.getElementById('subtitle').innerHTML=d.subtitle;
-document.getElementById('phone').innerHTML=`<a href='tel:${d.phone}'>${d.phone}</a>`;
-document.getElementById('email').innerHTML=`<a href='mailto:${d.email}'>${d.email}</a>`;
+let d=DATA[lang];
 
-const root=document.getElementById('content');
+// header
+ document.getElementById('title').innerHTML=d.title;
+ document.getElementById('subtitle').innerHTML=d.subtitle;
+ document.getElementById('phone').innerHTML=`<a href='tel:${d.phone}'>${d.phone}</a>`;
+ document.getElementById('email').innerHTML=`<a href='mailto:${d.email}'>${d.email}</a>`;
+
+// blocks
+let root=document.getElementById('content');
 root.innerHTML='';
 
 d.blocks.forEach(b=>{
 let wrap=document.createElement('div');
 wrap.className='section-bg light';
-let div=document.createElement('div');
-div.className='section-inner';
+let inner=document.createElement('div');
+inner.className='section-inner';
 
 let html=`<div class="title-big">${b.title}</div>`;
 if(b.text) html+=`<div class="text">${b.text}</div>`;
+
+if(b.type==='partners'){
+html+='<div class="partners">';
+d.partners.sort().forEach(p=>{
+html+=`<img src="images/partners/${p}" class="partner-img">`;
+});
+html+='</div>';
+}
 
 if(b.type==='advantages'){
 html+='<div class="advantages-list">';
@@ -220,28 +177,30 @@ d.advantages.forEach(a=>html+=`<div class="adv-item">${a}</div>`);
 html+='</div>';
 }
 
- div.innerHTML=html;
- wrap.appendChild(div);
- root.appendChild(wrap);
+inner.innerHTML=html;
+wrap.appendChild(inner);
+root.appendChild(wrap);
 });
 
-const c=d.contacts;
+// contacts
+let c=d.contacts;
 document.getElementById('contacts').innerHTML=`<div class='contacts-title'>${c[0]}</div><div>${c[1]}</div><div>${c[2]}</div><div>${c[3]}</div>`;
 
-document.getElementById('footerTitle').innerHTML=d.title;
-document.getElementById('footerSub').innerHTML=d.subtitle;
-document.getElementById('footerRight').innerHTML=`<a href='tel:${d.phone}'>${d.phone}</a><br><a href='mailto:${d.email}'>${d.email}</a><br>${c[3]}`;
+// footer
+ document.getElementById('footerTitle').innerHTML=d.title;
+ document.getElementById('footerSub').innerHTML=d.subtitle;
+ document.getElementById('footerRight').innerHTML=`<div><a href='tel:${d.phone}'>${d.phone}</a></div><div><a href='mailto:${d.email}'>${d.email}</a></div><div>${c[3]}</div>`;
 
 renderLang();
 }
 
 function renderLang(){
-const box=document.getElementById('langBox');
+let box=document.getElementById('langBox');
 box.innerHTML='';
-['ru','en'].forEach(l=>{
+['ru','en','kz'].forEach(l=>{
 let div=document.createElement('div');
 div.className='lang-item'+(l===lang?' active':'');
-div.innerText=l==='ru'?'РУС':'ENG';
+div.innerText=l==='ru'?'РУС':l==='en'?'ENG':'ҚАЗ';
 if(l!==lang) div.onclick=()=>{lang=l;document.getElementById('currentLang').innerText=div.innerText;toggleLang();render()};
 box.appendChild(div);
 });
@@ -249,10 +208,7 @@ box.appendChild(div);
 
 function toggleLang(){
 let b=document.getElementById('langBox');
-let arrow=document.getElementById('arrow');
-let open=b.style.display==='block';
-b.style.display=open?'none':'block';
-arrow.innerText=open?'▾':'▴';
+b.style.display=b.style.display==='block'?'none':'block';
 }
 
 render();
