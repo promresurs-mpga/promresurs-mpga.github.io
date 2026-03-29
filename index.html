@@ -1,219 +1,761 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ТОО «ПРОМРЕСУРС MPGA»</title>
-<link rel="icon" href="images/icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ТОО «ПРОМРЕСУРС MPGA»</title>
+  <link rel="icon" href="images/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
 
-<style>
-:root{
---white:#ffffff;--light-gray:#e0e0e0;--gray:#c0c0c0;
---bg-light:#004080;--bg-dark:#002040;
---fs-1:60px;--fs-2:45px;--fs-3:30px;--fs-4:22.5px;--fs-5:15px;
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:'Ubuntu Condensed',sans-serif}
-a{text-decoration:none;color:inherit}
-.click{cursor:pointer;transition:.25s}
+  <style>
+    :root {
+      --white: #ffffff;
+      --light-gray: #e0e0e0;
+      --gray: #c0c0c0;
+      --bg-light: #004080;
+      --bg-dark: #002040;
+      --fs-1: 60px;
+      --fs-2: 45px;
+      --fs-3: 30px;
+      --fs-4: 22.5px;
+      --fs-5: 15px;
+    }
 
-.section{width:100%}
-.inner{max-width:75%;margin:0 auto;padding:calc(var(--fs-1)/2) 0;text-align:center}
+    * {
+      box-sizing: border-box;
+    }
 
-.header{background:var(--bg-light);color:var(--white);display:flex;justify-content:space-between;align-items:center;padding:calc(var(--fs-1)/8)}
-.header-left{margin-left:calc(var(--fs-1)/4);cursor:pointer}
-.header-left:hover{color:var(--bg-dark)}
-.title{font-size:var(--fs-1);font-weight:bold}
-.subtitle{font-size:var(--fs-3);color:var(--gray)}
-.header-right{display:flex;align-items:center;gap:calc(var(--fs-3)/2);font-size:var(--fs-3)}
-.header-right .click:hover{color:var(--bg-dark)}
+    body {
+      margin: 0;
+      font-family: 'Ubuntu Condensed', sans-serif;
+    }
 
-.lang{position:relative}
-.lang-box{display:none;position:absolute;right:0;background:var(--white);border:1px solid var(--bg-dark);width:100%}
-.lang-item{padding:calc(var(--fs-5));text-align:center;color:var(--bg-light)}
-.lang-item.active{background:var(--bg-dark);color:var(--gray);pointer-events:none}
-.lang-item:hover:not(.active){background:var(--bg-light);color:var(--white)}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-.hero{height:75vh;overflow:hidden}
-.hero img{width:100%;height:120%;object-fit:cover}
+    .click {
+      cursor: pointer;
+      transition: 0.25s;
+    }
 
-.title-big{font-size:var(--fs-1);font-weight:bold;margin-bottom:calc(var(--fs-1)/4)}
-.text{font-size:var(--fs-3);line-height:1.6;margin-top:calc(var(--fs-2)/4)}
+    /* Sections */
+    .section {
+      width: 100%;
+    }
 
-.table{width:100%;border-collapse:collapse;margin-top:calc(var(--fs-3)/2)}
-.table th,.table td{border:calc(var(--fs-3)/8) solid var(--bg-light);text-align:center}
-.table th{font-size:var(--fs-3);background:var(--bg-dark);color:var(--white);font-weight:normal}
-.table td{font-size:var(--fs-4);background:var(--white);color:var(--bg-dark)}
+    .inner {
+      max-width: 75%;
+      margin: 0 auto;
+      padding: calc(var(--fs-1) / 2) 0;
+      text-align: center;
+    }
 
-.table-dark th{background:var(--bg-light)}
-.table-dark td{background:var(--white);color:var(--bg-dark)}
+    /* Header */
+    .header {
+      background: var(--bg-light);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: calc(var(--fs-1) / 8);
+    }
 
-.row{display:flex;flex-wrap:wrap;justify-content:center;gap:calc(var(--fs-3))}
-.img{width:150px;height:150px;background:var(--gray)}
+    .header-left {
+      margin-left: calc(var(--fs-1) / 4);
+      cursor: pointer;
+      transition: 0.25s;
+    }
 
-.partners{display:flex;flex-wrap:wrap;gap:calc(var(--fs-3));justify-content:center;margin-top:calc(var(--fs-1)/2)}
-.partner-img{max-height:60px}
+    .header-left:hover {
+      color: var(--bg-dark);
+    }
 
-.advantages-list{margin-top:calc(var(--fs-3))}
-.adv-item{font-size:var(--fs-3);font-weight:bold;padding:calc(var(--fs-4)/2) 0;border-top:calc(var(--fs-2)/16) solid var(--bg-light)}
-.adv-item:last-child{border-bottom:calc(var(--fs-2)/16) solid var(--bg-light)}
+    .title {
+      font-size: var(--fs-1);
+      font-weight: bold;
+      transition: 0.25s;
+    }
 
-.contacts-bg{background:var(--bg-light)}
-.contacts-inner{max-width:75%;margin:0 auto;display:flex;justify-content:space-between;gap:calc(var(--fs-2));padding:calc(var(--fs-1)/2) 0}
-.contacts-left{color:var(--light-gray);font-size:var(--fs-3);text-align:left}
-.contacts-title{font-size:var(--fs-1);color:var(--white);font-weight:bold;margin-bottom:calc(var(--fs-3))}
-.contacts-left .click:hover{color:var(--bg-dark)}
+    .subtitle {
+      font-size: var(--fs-3);
+      color: var(--gray);
+      transition: 0.25s;
+    }
 
-.footer{background:var(--bg-dark);color:var(--white);display:flex;justify-content:space-between;padding:calc(var(--fs-3)/2)}
-.footer-left{cursor:pointer}
-.footer-left:hover{color:var(--bg-light)}
-.footer-title{font-size:var(--fs-2);font-weight:bold}
-.footer-sub{color:var(--gray);font-size:var(--fs-3)}
-.footer-right{font-size:var(--fs-4);color:var(--light-gray)}
-.footer-right div{margin-top:calc(var(--fs-4)/2)}
-.footer-right div:hover{color:var(--bg-light)}
-</style>
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: calc(var(--fs-3) / 2);
+      font-size: var(--fs-3);
+    }
+
+    .header-right .click:hover {
+      color: var(--bg-dark);
+    }
+
+    /* Language selector */
+    .lang {
+      position: relative;
+    }
+
+    .lang-box {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--bg-dark);
+      width: 100%;
+    }
+
+    .lang-item {
+      padding: calc(var(--fs-5));
+      text-align: center;
+      color: var(--bg-light);
+    }
+
+    .lang-item.active {
+      background: var(--bg-dark);
+      color: var(--gray);
+      pointer-events: none;
+    }
+
+    .lang-item:hover:not(.active) {
+      background: var(--bg-light);
+      color: var(--white);
+    }
+
+    /* Hero */
+    .hero {
+      height: 75vh;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg-light);
+    }
+
+    .hero img {
+      width: 100%;
+      height: 120%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      will-change: transform;
+    }
+
+    /* Content */
+    .title-big {
+      font-size: var(--fs-1);
+      font-weight: bold;
+      margin-bottom: calc(var(--fs-1) / 4);
+    }
+
+    .text {
+      font-size: var(--fs-3);
+      line-height: 1.6;
+      margin-top: calc(var(--fs-2) / 4);
+    }
+
+    /* Tables */
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: calc(var(--fs-3) / 2);
+    }
+
+    .table th,
+    .table td {
+      border: calc(var(--fs-3) / 8) solid var(--bg-light);
+      text-align: center;
+      padding: calc(var(--fs-4) / 4);
+    }
+
+    .table th {
+      font-size: var(--fs-3);
+      background: var(--bg-dark);
+      color: var(--white);
+      font-weight: normal;
+    }
+
+    .table td {
+      font-size: var(--fs-4);
+      background: var(--white);
+      color: var(--bg-dark);
+    }
+
+    .table-dark th {
+      background: var(--bg-light);
+      border-color: var(--bg-dark);
+      color: var(--white);
+    }
+
+    .table-dark td {
+      background: var(--white);
+      color: var(--bg-light);
+      border-color: var(--bg-dark);
+    }
+
+    /* Row and images */
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: calc(var(--fs-3));
+    }
+
+    .img {
+      width: calc(var(--fs-1) * 2.5);
+      height: calc(var(--fs-1) * 2.5);
+      background: var(--gray);
+    }
+
+    .img-label {
+      margin-top: calc(var(--fs-4) / 2);
+      font-size: var(--fs-4);
+      color: var(--bg-light);
+    }
+
+    /* Partners */
+    .partners {
+      display: flex;
+      flex-wrap: wrap;
+      gap: calc(var(--fs-3));
+      justify-content: center;
+      margin-top: calc(var(--fs-1));
+    }
+
+    .partner-img {
+      max-height: var(--fs-4);
+    }
+
+    /* Advantages */
+    .advantages-list {
+      margin-top: calc(var(--fs-3));
+    }
+
+    .adv-item {
+      font-size: var(--fs-3);
+      font-weight: bold;
+      padding: calc(var(--fs-4) / 2) 0;
+      border-top: calc(var(--fs-2) / 16) solid var(--bg-light);
+    }
+
+    .adv-item:last-child {
+      border-bottom: calc(var(--fs-2) / 16) solid var(--bg-light);
+    }
+
+    /* Contacts section */
+    .contacts-bg {
+      background: var(--bg-light);
+    }
+
+    .contacts-inner {
+      max-width: 75%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: calc(var(--fs-2));
+      padding: calc(var(--fs-1) / 2) 0;
+    }
+
+    .contacts-left {
+      color: var(--light-gray);
+      font-size: var(--fs-3);
+      text-align: left;
+    }
+
+    .contacts-title {
+      font-size: var(--fs-1);
+      color: var(--white);
+      font-weight: bold;
+      margin-bottom: calc(var(--fs-3));
+    }
+
+    .contacts-left .click:hover {
+      color: var(--bg-dark);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--bg-dark);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      padding: calc(var(--fs-3) / 2);
+    }
+
+    .footer-left {
+      cursor: pointer;
+    }
+
+    .footer-left:hover {
+      color: var(--bg-light);
+    }
+
+    .footer-title {
+      font-size: var(--fs-2);
+      font-weight: bold;
+      transition: 0.25s;
+    }
+
+    .footer-left:hover .footer-title {
+      color: var(--bg-light);
+    }
+
+    .footer-left:hover .footer-sub {
+      color: var(--bg-light);
+    }
+
+    .footer-sub {
+      color: var(--gray);
+      font-size: calc(var(--fs-2) * 0.75);
+      margin-top: calc(var(--fs-3) / 4);
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .footer-sub:hover {
+      color: var(--bg-light);
+    }
+
+    .footer-right {
+      font-size: var(--fs-4);
+      color: var(--light-gray);
+    }
+
+    .footer-right div {
+      margin-top: calc(var(--fs-4) / 2);
+    }
+
+    .footer-right div:hover {
+      color: var(--bg-light);
+    }
+
+    /* Mobile menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: var(--fs-2);
+      cursor: pointer;
+      transition: 0.25s;
+      padding: 0;
+    }
+
+    .mobile-menu-btn:hover {
+      color: var(--bg-dark);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--bg-dark);
+      border-top: 1px solid var(--bg-light);
+      width: 100%;
+      flex-direction: column;
+      gap: calc(var(--fs-4) / 2);
+      padding: calc(var(--fs-3) / 2);
+      text-align: center;
+      z-index: 1000;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-menu-item {
+      color: var(--light-gray);
+      font-size: var(--fs-3);
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .mobile-menu-item:hover {
+      color: var(--white);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      :root {
+        --fs-1: 36px;
+        --fs-2: 27px;
+        --fs-3: 18px;
+        --fs-4: 13.5px;
+        --fs-5: 9px;
+      }
+
+      .inner {
+        max-width: 90%;
+      }
+
+      .header {
+        position: relative;
+        flex-wrap: wrap;
+        gap: calc(var(--fs-3) / 2);
+      }
+
+      .header-left {
+        margin-left: 0;
+        flex-basis: 100%;
+        order: 1;
+      }
+
+      .header-right {
+        gap: calc(var(--fs-3) / 2);
+        font-size: var(--fs-4);
+        order: 2;
+        width: calc(100% - calc(var(--fs-2) * 1.5));
+      }
+
+      .header-right span {
+        display: none;
+      }
+
+      .lang {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+        order: 3;
+        position: absolute;
+        right: calc(var(--fs-3) / 2);
+        top: 100%;
+      }
+
+      .mobile-menu {
+        display: none;
+      }
+
+      .header:has(.mobile-menu.active) .mobile-menu {
+        display: flex;
+      }
+
+      .contacts-inner {
+        flex-direction: column;
+        gap: calc(var(--fs-2));
+      }
+
+      .contacts-inner iframe {
+        width: 100% !important;
+        max-width: 500px;
+        height: auto !important;
+        min-height: 300px;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: calc(var(--fs-3));
+      }
+
+      .footer-right {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --fs-1: 24px;
+        --fs-2: 18px;
+        --fs-3: 12px;
+        --fs-4: 9px;
+        --fs-5: 6px;
+      }
+
+      .inner {
+        max-width: 95%;
+      }
+
+      .row {
+        gap: calc(var(--fs-3) / 2);
+      }
+
+      .img {
+        width: calc(var(--fs-1) * 3);
+        height: calc(var(--fs-1) * 3);
+      }
+
+      .hero {
+        height: 50vh;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="header">
-<div class="header-left" onclick="scrollToTop()">
-<div class="title" id="title"></div>
-<div class="subtitle" id="subtitle"></div>
-</div>
-<div class="header-right">
-<span>☏</span><div class="click" id="phone"></div>
-<span>✉</span><div class="click" id="email"></div>
-<span>⌂</span>
-<div class="lang click" onclick="toggleLang()">
-<span id="currentLang">РУС</span> <span id="arrow">▾</span>
-<div class="lang-box" id="langBox"></div>
-</div>
-</div>
-</div>
+  <div class="header">
+    <div class="header-left click" onclick="scrollToTop()">
+      <div class="title" id="title"></div>
+      <div class="subtitle" id="subtitle"></div>
+    </div>
+    <div class="header-right">
+      <span>☏</span>
+      <div class="click" id="phone"></div>
+      <span>✉</span>
+      <div class="click" id="email"></div>
+      <span>🌏︎</span>
+      <div class="lang click" onclick="toggleLang()">
+        <span id="currentLang">РУС</span>
+        <span id="arrow">▾</span>
+        <div class="lang-box" id="langBox"></div>
+      </div>
+    </div>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">≡</button>
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-item" id="mobilePhone"></div>
+      <div class="mobile-menu-item" id="mobileEmail"></div>
+      <div class="mobile-menu-item click" onclick="toggleMobileLang()">
+        <span id="mobileLang">РУС</span> <span id="mobileArrow">▾</span>
+      </div>
+      <div class="lang-box" id="mobileLangBox"></div>
+    </div>
+  </div>
 
-<div class="hero"><img src="images/banner.png"></div>
-<div id="content"></div>
+  <div class="hero">
+    <img src="images/banner.png">
+  </div>
+  <div id="content"></div>
 
-<div class="section contacts-bg">
-<div class="contacts-inner">
-<div class="contacts-left" id="contacts"></div>
-<iframe src="https://www.google.com/maps?q=50.285870,57.219343&hl=ru&z=16&output=embed" width="500" height="500" style="border:0;"></iframe>
-</div>
-</div>
+  <div class="section contacts-bg">
+    <div class="contacts-inner">
+      <div class="contacts-left" id="contacts"></div>
+      <iframe src="https://www.google.com/maps?q=50.285870,57.219343&hl=ru&z=16&output=embed" width="500" height="500" style="border:0;"></iframe>
+    </div>
+  </div>
 
-<div class="footer">
-<div class="footer-left" onclick="scrollToTop()">
-<div class="footer-title" id="footerTitle"></div>
-<div class="footer-sub" id="footerSub"></div>
-</div>
-<div class="footer-right" id="footerRight"></div>
-</div>
+  <div class="footer">
+    <div class="footer-left click" onclick="scrollToTop()">
+      <div class="footer-title" id="footerTitle"></div>
+      <div class="footer-sub" id="footerSub"></div>
+    </div>
+    <div class="footer-right" id="footerRight"></div>
+  </div>
 
-<script>
-const phoneFormatted='+7 (775) 331-64-44';
-const addressRU='Республика Казахстан, г. Актобе, р-н Алматы, ул. Карасай Батыра 35, н. п. 2';
-const addressKZ='Қазақстан Республикасы, Ақтөбе қ., Алматы ауданы, Қарасай Батыр көшесі 35, н. п. 2';
-const addressEN='Republic of Kazakhstan, Aktobe, Almaty district, Karasai Batyr st. 35, office 2';
+  <script>
+  const phoneFormatted = '+7 (775) 331-64-44';
+  const addressRU = 'Республика Казахстан, г. Актобе, р-н Алматы, ул. Карасай Батыра 35, н. п. 2';
+  const addressKZ = 'Қазақстан Республикасы, Ақтөбе қ., Алматы ауданы, Қарасай Батыр көшесі 35, н. п. 2';
+  const addressEN = 'Republic of Kazakhstan, Aktobe, Almaty district, Karasai Batyr st. 35, office 2';
 
-const partners=['agakim','asahiKasei','cardolite','covestro','croda','evonik','kraton','roehm','unger','vandeputte','wanhua','zschimmerAndSchwarz'];
+  const partners = ['agakim', 'asahiKasei', 'cardolite', 'covestro', 'croda', 'evonik', 'kraton', 'roehm', 'unger', 'vandeputte', 'wanhua', 'zschimmerAndSchwarz'];
 
-let lang='ru';
+  let lang = 'ru';
 
-const DATA={
-ru:{
-title:'ТОО «ПРОМРЕСУРС MPGA»',subtitle:'Производственно-торговая компания',
-aboutTitle:'О НАС',produceTitle:'МЫ ПРОИЗВОДИМ',productsTitle:'НАШИ ТОВАРЫ',supplyTitle:'МЫ ПОСТАВЛЯЕМ',partnersTitle:'НАШИ ПАРТНЁРЫ',advantagesTitle:'НАШИ ПРЕИМУЩЕСТВА',contactsTitle:'КОНТАКТЫ',
-about:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> — производственно-торговая компания, основанная в 2017 году в городе Актобе, Республике Казахстан.<br><br>Компания специализируется на производстве лакокрасочной продукции и строительных материалов, а также на поставке химических компонентов для различных отраслей промышленности.<br><br>Предприятие располагает собственными производственными мощностями и современным оборудованием, что позволяет выпускать широкий ассортимент продукции и поддерживать стабильное качество.<br><br>Одним из ключевых принципов работы компании является строгое соблюдение технологических норм производства, использование сырья от проверенных и надежных поставщиков, а также постоянное совершенствование производственных процессов.<br><br>Благодаря развитию производственной базы и расширению технологических возможностей компания планирует увеличить ассортимент выпускаемой продукции до 500 наименований.`,
-produce:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> производит широкий спектр лакокрасочной и строительной продукции, используемой в строительстве, ремонте и промышленности.<br><br>Ассортимент выпускаемой продукции включает несколько основных направлений.`,
-headers1:['Краски','Материалы','Покрытия'],
-cols1:[['Дорожные','Интерьерные','Моющиеся','Потолочные','Универсальные'],['Герметики','Шпатлевки','Наливные полы'],['Бетоноконтакт','Грунтовки','Лаки']],
-supply:`<b>ТОО «ПРОМРЕСУРС MPGA»</b> также занимается поставкой химических компонентов для предприятий химической промышленности и производственных компаний.<br><br>Компания обеспечивает стабильные поставки продукции, высокое качество материалов и профессиональную техническую поддержку для своих клиентов.<br><br>Закупка химического сырья осуществляется напрямую у заводов-изготовителей или у официальных дистрибьюторов, что гарантирует надежность и соответствие продукции установленным стандартам.<br><br>В ассортименте поставляемой продукции представлены только проверенные химические компоненты, соответствующие международным требованиям качества.`,
-headers2:['Смолы','Растворители','Пигменты','Добавки','Отвердители и Катализаторы'],
-cols2:[['Акриловые','Алкидные','Виниловые','Полиуретановые','Силиконовые','Эпоксидные'],['Ароматические углеводороды','Вода','Жиры','Кетоны','Масла','Эфиры'],['Антикоррозионные','Минеральные','Неорганические','Органические'],['Адгезионные','Биологические','Диспергирующие','Пенообразующие','Реологические','Функциональные'],['Амины','Изоцианаты','Металлические сиккативы','Пероксиды']],
-advantages:['Прямые контракты с производителями','Гарантированное качество поставляемых химических компонентов','Собственные складские мощности','Гибкие условия сотрудничества','Различные виды упаковки и фасовки','Техническая консультация и поддержка','Индивидуальный подход к каждому клиенту','Многоуровневая система контроля качества продукции']
-},
+  const DATA = {
+    ru: {
+      title: 'ТОО «ПРОМРЕСУРС MPGA»',
+      subtitle: 'Производственно-торговая компания',
+      aboutTitle: 'О НАС',
+      produceTitle: 'МЫ ПРОИЗВОДИМ',
+      productsTitle: 'НАШИ ТОВАРЫ',
+      supplyTitle: 'МЫ ПОСТАВЛЯЕМ',
+      partnersTitle: 'НАШИ ПАРТНЁРЫ',
+      advantagesTitle: 'НАШИ ПРЕИМУЩЕСТВА',
+      contactsTitle: 'КОНТАКТЫ',
+      productLabels: ['Краски и лаки', 'Растворители', 'Герметики'],
+      about: `<b>ТОО «ПРОМРЕСУРС MPGA»</b> — производственно-торговая компания, основанная в 2017 году в городе Актобе, Республике Казахстан.<br><br>Компания специализируется на производстве лакокрасочной продукции и строительных материалов, а также на поставке химических компонентов для различных отраслей промышленности.<br><br>Предприятие располагает собственными производственными мощностями и современным оборудованием, что позволяет выпускать широкий ассортимент продукции и поддерживать стабильное качество.<br><br>Одним из ключевых принципов работы компании является строгое соблюдение технологических норм производства, использование сырья от проверенных и надежных поставщиков, а также постоянное совершенствование производственных процессов.<br><br>Благодаря развитию производственной базы и расширению технологических возможностей компания планирует увеличить ассортимент выпускаемой продукции до 500 наименований.`,
+      produce: `<b>ТОО «ПРОМРЕСУРС MPGA»</b> производит широкий спектр лакокрасочной и строительной продукции, используемой в строительстве, ремонте и промышленности.<br><br>Ассортимент выпускаемой продукции включает несколько основных направлений.`,
+      headers1: ['Краски', 'Материалы', 'Покрытия'],
+      cols1: [['Дорожные', 'Интерьерные', 'Моющиеся', 'Потолочные', 'Универсальные'], ['Герметики', 'Шпатлевки', 'Наливные полы'], ['Бетоноконтакт', 'Грунтовки', 'Лаки']],
+      supply: `<b>ТОО «ПРОМРЕСУРС MPGA»</b> также занимается поставкой химических компонентов для предприятий химической промышленности и производственных компаний.<br><br>Компания обеспечивает стабильные поставки продукции, высокое качество материалов и профессиональную техническую поддержку для своих клиентов.<br><br>Закупка химического сырья осуществляется напрямую у заводов-изготовителей или у официальных дистрибьюторов, что гарантирует надежность и соответствие продукции установленным стандартам.<br><br>В ассортименте поставляемой продукции представлены только проверенные химические компоненты, соответствующие международным требованиям качества.`,
+      headers2: ['Смолы', 'Растворители', 'Пигменты', 'Добавки', 'Отвердители и Катализаторы'],
+      cols2: [['Акриловые', 'Алкидные', 'Виниловые', 'Полиуретановые', 'Силиконовые', 'Эпоксидные'], ['Ароматические углеводороды', 'Вода', 'Жиры', 'Кетоны', 'Масла', 'Эфиры'], ['Антикоррозионные', 'Минеральные', 'Неорганические', 'Органические'], ['Адгезионные', 'Биологические', 'Диспергирующие', 'Пенообразующие', 'Реологические', 'Функциональные'], ['Амины', 'Изоцианаты', 'Металлические сиккативы', 'Пероксиды']],
+      advantages: ['Прямые контракты с производителями', 'Гарантированное качество поставляемых химических компонентов', 'Собственные складские мощности', 'Гибкие условия сотрудничества', 'Различные виды упаковки и фасовки', 'Техническая консультация и поддержка', 'Индивидуальный подход к каждому клиенту', 'Многоуровневая система контроля качества продукции']
+    },
 
-kz:{
-title:'«ПРОМРЕСУРС MPGA» ЖШС',subtitle:'Өндірістік-сауда компаниясы',
-aboutTitle:'БІЗ ТУРАЛЫ',produceTitle:'БІЗ ӨНДІРЕМІЗ',productsTitle:'БІЗДІҢ ӨНІМДЕР',supplyTitle:'БІЗ ЖЕТКІЗЕМІЗ',partnersTitle:'БІЗДІҢ СЕРІКТЕСТЕР',advantagesTitle:'АРТЫҚШЫЛЫҚТАРЫМЫЗ',contactsTitle:'БАЙЛАНЫС',
-about:`<b>«ПРОМРЕСУРС MPGA» ЖШС</b> — 2017 жылы Қазақстан Республикасы, Ақтөбе қаласында құрылған өндірістік-сауда компаниясы.<br><br>Компания лак-бояу өнімдері мен құрылыс материалдарын өндіруге, сондай-ақ әртүрлі өнеркәсіп салаларына арналған химиялық компоненттерді жеткізуге маманданған.<br><br>Кәсіпорын заманауи жабдықтармен жабдықталған өз өндірістік қуаттарына ие, бұл өнімнің кең ассортиментін шығаруға және тұрақты сапаны сақтауға мүмкіндік береді.<br><br>Компания жұмысының негізгі қағидаларының бірі — өндіріс технологияларын қатаң сақтау, сенімді жеткізушілерден шикізат пайдалану және өндірістік процестерді үнемі жетілдіру.<br><br>Өндірістік базаны дамыту және технологиялық мүмкіндіктерді кеңейту арқылы компания өнім түрлерін 500 атауға дейін ұлғайтуды жоспарлап отыр.`,
-produce:`<b>«ПРОМРЕСУРС MPGA» ЖШС</b> құрылыс, жөндеу және өнеркәсіпте қолданылатын лак-бояу және құрылыс материалдарының кең спектрін өндіреді.<br><br>Өнім ассортименті бірнеше негізгі бағыттарды қамтиды.`,
-headers1:['Бояулар','Материалдар','Қаптамалар'],
-cols1:[['Жол','Ішкі','Жууға болатын','Төбелік','Әмбебап'],['Герметиктер','Шпатлевкалар','Өздігінен тегістелетін едендер'],['Бетонконтакт','Грунттар','Лактар']],
-supply:`<b>«ПРОМРЕСУРС MPGA» ЖШС</b> сондай-ақ химия өнеркәсібі кәсіпорындары мен өндірістік компаниялар үшін химиялық компоненттерді жеткізумен айналысады.<br><br>Компания тұрақты жеткізілімдерді, жоғары сапалы материалдарды және кәсіби техникалық қолдауды қамтамасыз етеді.<br><br>Шикізат тікелей өндіруші зауыттардан немесе ресми дистрибьюторлардан сатып алынады, бұл өнімнің сенімділігі мен стандарттарға сәйкестігін қамтамасыз етеді.<br><br>Жеткізілетін өнімдер ассортиментінде халықаралық сапа талаптарына сәйкес тексерілген химиялық компоненттер ғана ұсынылған.`,
-headers2:['Шайырлар','Еріткіштер','Пигменттер','Қоспалар','Қатайтқыштар және катализаторлар'],
-cols2:[['Акрил','Алкид','Винил','Полиуретан','Силикон','Эпоксид'],['Ароматикалық көмірсутектер','Су','Майлар','Кетондар','Майлар','Эфирлер'],['Антикоррозиялық','Минералдық','Бейорганикалық','Органикалық'],['Адгезиялық','Биологиялық','Диспергирлеуші','Көбіктүзуші','Реологиялық','Функционалдық'],['Аминдер','Изоцианаттар','Металл сиккативтері','Пероксидтер']],
-advantages:['Өндірушілермен тікелей келісімшарттар','Жеткізілетін химиялық компоненттердің кепілдендірілген сапасы','Өз қойма қуаттары','Икемді ынтымақтастық шарттары','Қаптама мен фасовканың әртүрлі түрлері','Техникалық кеңес және қолдау','Әр клиентке жеке көзқарас','Өнім сапасын көп деңгейлі бақылау жүйесі']
-},
+    kz: {
+      title: '«ПРОМРЕСУРС MPGA» ЖШС',
+      subtitle: 'Өндірістік-сауда компаниясы',
+      aboutTitle: 'БІЗ ТУРАЛЫ',
+      produceTitle: 'БІЗ ӨНДІРЕМІЗ',
+      productsTitle: 'БІЗДІҢ ӨНІМДЕР',
+      supplyTitle: 'БІЗ ЖЕТКІЗЕМІЗ',
+      partnersTitle: 'БІЗДІҢ СЕРІКТЕСТЕР',
+      advantagesTitle: 'АРТЫҚШЫЛЫҚТАРЫМЫЗ',
+      contactsTitle: 'БАЙЛАНЫС',
+      productLabels: ['Бояулар және лактар', 'Еріткіштер', 'Герметиктер'],
+      about: `<b>«ПРОМРЕСУРС MPGA» ЖШС</b> — 2017 жылы Қазақстан Республикасы, Ақтөбе қаласында құрылған өндірістік-сауда компаниясы.<br><br>Компания лак-бояу өнімдері мен құрылыс материалдарын өндіруге, сондай-ақ әртүрлі өнеркәсіп салаларына арналған химиялық компоненттерді жеткізуге маманданған.<br><br>Кәсіпорын заманауи жабдықтармен жабдықталған өз өндірістік қуаттарына ие, бұл өнімнің кең ассортиментін шығаруға және тұрақты сапаны сақтауға мүмкіндік береді.<br><br>Компания жұмысының негізгі қағидаларының бірі — өндіріс технологияларын қатаң сақтау, сенімді жеткізушілерден шикізат пайдалану және өндірістік процестерді үнемі жетілдіру.<br><br>Өндірістік базаны дамыту және технологиялық мүмкіндіктерді кеңейту арқылы компания өнім түрлерін 500 атауға дейін ұлғайтуды жоспарлап отыр.`,
+      produce: `<b>«ПРОМРЕСУРС MPGA» ЖШС</b> құрылыс, жөндеу және өнеркәсіпте қолданылатын лак-бояу және құрылыс материалдарының кең спектрін өндіреді.<br><br>Өнім ассортименті бірнеше негізгі бағыттарды қамтиды.`,
+      headers1: ['Бояулар', 'Материалдар', 'Қаптамалар'],
+      cols1: [['Жол', 'Ішкі', 'Жууға болатын', 'Төбелік', 'Әмбебап'], ['Герметиктер', 'Шпатлевкалар', 'Өздігінен тегістелетін едендер'], ['Бетонконтакт', 'Грунттар', 'Лактар']],
+      supply: `<b>«ПРОМРЕСУРС MPGA» ЖШС</b> сондай-ақ химия өнеркәсібі кәсіпорындары мен өндірістік компаниялар үшін химиялық компоненттерді жеткізумен айналысады.<br><br>Компания тұрақты жеткізілімдерді, жоғары сапалы материалдарды және кәсіби техникалық қолдауды қамтамасыз етеді.<br><br>Шикізат тікелей өндіруші зауыттардан немесе ресми дистрибьюторлардан сатып алынады, бұл өнімнің сенімділігі мен стандарттарға сәйкестігін қамтамасыз етеді.<br><br>Жеткізілетін өнімдер ассортиментінде халықаралық сапа талаптарына сәйкес тексерілген химиялық компоненттер ғана ұсынылған.`,
+      headers2: ['Шайырлар', 'Еріткіштер', 'Пигменттер', 'Қоспалар', 'Қатайтқыштар және катализаторлар'],
+      cols2: [['Акрил', 'Алкид', 'Винил', 'Полиуретан', 'Силикон', 'Эпоксид'], ['Ароматикалық көмірсутектер', 'Су', 'Майлар', 'Кетондар', 'Майлар', 'Эфирлер'], ['Антикоррозиялық', 'Минералдық', 'Бейорганикалық', 'Органикалық'], ['Адгезиялық', 'Биологиялық', 'Диспергирлеуші', 'Көбіктүзуші', 'Реологиялық', 'Функционалдық'], ['Аминдер', 'Изоцианаттар', 'Металл сиккативтері', 'Пероксидтер']],
+      advantages: ['Өндірушілермен тікелей келісімшарттар', 'Жеткізілетін химиялық компоненттердің кепілдендірілген сапасы', 'Өз қойма қуаттары', 'Икемді ынтымақтастық шарттары', 'Қаптама мен фасовканың әртүрлі түрлері', 'Техникалық кеңес және қолдау', 'Әр клиентке жеке көзқарас', 'Өнім сапасын көп деңгейлі бақылау жүйесі']
+    },
 
-en:{
-title:'PROMRESURS MPGA LLP',subtitle:'Manufacturing and trading company',
-aboutTitle:'ABOUT US',produceTitle:'WE PRODUCE',productsTitle:'OUR PRODUCTS',supplyTitle:'WE SUPPLY',partnersTitle:'OUR PARTNERS',advantagesTitle:'OUR ADVANTAGES',contactsTitle:'CONTACTS',
-about:`<b>PROMRESURS MPGA LLP</b> is a manufacturing and trading company founded in 2017 in Aktobe, Republic of Kazakhstan.<br><br>The company specializes in the production of paints and coatings, construction materials, and the supply of chemical components for various industries.<br><br>The enterprise has its own production facilities and modern equipment, allowing it to produce a wide range of products while maintaining consistent quality.<br><br>One of the key principles of the company is strict compliance with production technologies, the use of raw materials from reliable suppliers, and continuous improvement of manufacturing processes.<br><br>Due to the development of its production base and expansion of technological capabilities, the company plans to increase its product range to 500 items.`,
-produce:`<b>PROMRESURS MPGA LLP</b> produces a wide range of paints, coatings, and construction materials used in construction, repair, and industry.<br><br>The product range includes several main categories.`,
-headers1:['Paints','Materials','Coatings'],
-cols1:[['Road','Interior','Washable','Ceiling','Universal'],['Sealants','Putty','Self-leveling floors'],['Concrete contact','Primers','Varnishes']],
-supply:`<b>PROMRESURS MPGA LLP</b> also supplies chemical components for industrial enterprises and manufacturing companies.<br><br>The company ensures stable deliveries, high material quality, and professional technical support.<br><br>Raw materials are sourced directly from manufacturers or official distributors, ensuring reliability and compliance with standards.<br><br>Only proven chemical components that meet international quality requirements are included in the supplied range.`,
-headers2:['Resins','Solvents','Pigments','Additives','Hardeners and Catalysts'],
-cols2:[['Acrylic','Alkyd','Vinyl','Polyurethane','Silicone','Epoxy'],['Aromatic hydrocarbons','Water','Fats','Ketones','Oils','Esters'],['Anti-corrosion','Mineral','Inorganic','Organic'],['Adhesion','Biological','Dispersing','Foaming','Rheological','Functional'],['Amines','Isocyanates','Metal driers','Peroxides']],
-advantages:['Direct contracts with manufacturers','Guaranteed quality of supplied chemical components','Own warehouse facilities','Flexible cooperation terms','Various types of packaging and filling','Technical consultation and support','Individual approach to each client','Multi-level product quality control system']
-}
-};
+    en: {
+      title: 'PROMRESURS MPGA LLP',
+      subtitle: 'Manufacturing and trading company',
+      aboutTitle: 'ABOUT US',
+      produceTitle: 'WE PRODUCE',
+      productsTitle: 'OUR PRODUCTS',
+      supplyTitle: 'WE SUPPLY',
+      partnersTitle: 'OUR PARTNERS',
+      advantagesTitle: 'OUR ADVANTAGES',
+      contactsTitle: 'CONTACTS',
+      productLabels: ['Paints and varnishes', 'Solvents', 'Sealants'],
+      about: `<b>PROMRESURS MPGA LLP</b> is a manufacturing and trading company founded in 2017 in Aktobe, Republic of Kazakhstan.<br><br>The company specializes in the production of paints and coatings, construction materials, and the supply of chemical components for various industries.<br><br>The enterprise has its own production facilities and modern equipment, allowing it to produce a wide range of products while maintaining consistent quality.<br><br>One of the key principles of the company is strict compliance with production technologies, the use of raw materials from reliable suppliers, and continuous improvement of manufacturing processes.<br><br>Due to the development of its production base and expansion of technological capabilities, the company plans to increase its product range to 500 items.`,
+      produce: `<b>PROMRESURS MPGA LLP</b> produces a wide range of paints, coatings, and construction materials used in construction, repair, and industry.<br><br>The product range includes several main categories.`,
+      headers1: ['Paints', 'Materials', 'Coatings'],
+      cols1: [['Road', 'Interior', 'Washable', 'Ceiling', 'Universal'], ['Sealants', 'Putty', 'Self-leveling floors'], ['Concrete contact', 'Primers', 'Varnishes']],
+      supply: `<b>PROMRESURS MPGA LLP</b> also supplies chemical components for industrial enterprises and manufacturing companies.<br><br>The company ensures stable deliveries, high material quality, and professional technical support.<br><br>Raw materials are sourced directly from manufacturers or official distributors, ensuring reliability and compliance with standards.<br><br>Only proven chemical components that meet international quality requirements are included in the supplied range.`,
+      headers2: ['Resins', 'Solvents', 'Pigments', 'Additives', 'Hardeners and Catalysts'],
+      cols2: [['Acrylic', 'Alkyd', 'Vinyl', 'Polyurethane', 'Silicone', 'Epoxy'], ['Aromatic hydrocarbons', 'Water', 'Fats', 'Ketones', 'Oils', 'Esters'], ['Anti-corrosion', 'Mineral', 'Inorganic', 'Organic'], ['Adhesion', 'Biological', 'Dispersing', 'Foaming', 'Rheological', 'Functional'], ['Amines', 'Isocyanates', 'Metal driers', 'Peroxides']],
+      advantages: ['Direct contracts with manufacturers', 'Guaranteed quality of supplied chemical components', 'Own warehouse facilities', 'Flexible cooperation terms', 'Various types of packaging and filling', 'Technical consultation and support', 'Individual approach to each client', 'Multi-level product quality control system']
+    }
+  };
 
-function render(){
-let d=DATA[lang];
+  function render() {
+    let d = DATA[lang];
 
-title.innerHTML=d.title;
-subtitle.innerHTML=d.subtitle;
-phone.innerHTML=`<a href='tel:+77753316444'>${phoneFormatted}</a>`;
-email.innerHTML=`<a href='mailto:promresurs-mpga@outlook.com'>promresurs-mpga@outlook.com</a>`;
+    title.innerHTML = d.title;
+    subtitle.innerHTML = d.subtitle;
+    phone.innerHTML = `<a href='tel:+77753316444'>${phoneFormatted}</a>`;
+    email.innerHTML = `<a href='mailto:promresurs-mpga@outlook.com'>promresurs-mpga@outlook.com</a>`;
+    
+    mobilePhone.innerHTML = `☏ <a href='tel:+77753316444'>${phoneFormatted}</a>`;
+    mobileEmail.innerHTML = `✉ <a href='mailto:promresurs-mpga@outlook.com'>promresurs-mpga@outlook.com</a>`;
+    mobileLang.textContent = currentLang.textContent;
 
-content.innerHTML=`
-<div class='section'><div class='inner' style='color:var(--bg-light)'><div class='title-big'>${d.aboutTitle}</div><div class='text'>${d.about}</div></div></div>
-<div class='section' style='background:var(--bg-light)'><div class='inner' style='color:var(--white)'><div class='title-big'>${d.produceTitle}</div><div class='text'>${d.produce}</div><table class='table'>${renderTable(d.headers1,d.cols1)}</table></div></div>
-<div class='section'><div class='inner' style='color:var(--bg-light)'><div class='title-big'>${d.productsTitle}</div><div class='row'><div class='img'></div><div class='img'></div><div class='img'></div></div></div></div>
-<div class='section' style='background:var(--bg-dark)'><div class='inner' style='color:var(--white)'><div class='title-big'>${d.supplyTitle}</div><div class='text'>${d.supply}</div><table class='table table-dark'>${renderTable(d.headers2,d.cols2)}</table></div></div>
-<div class='section'><div class='inner' style='color:var(--bg-light)'><div class='title-big'>${d.partnersTitle}</div><div class='partners'>${partners.map(p=>`<img class='partner-img' src='images/partners/partner_${p}.png'>`).join('')}</div></div></div>
-<div class='section'><div class='inner' style='color:var(--bg-light)'><div class='title-big'>${d.advantagesTitle}</div><div class='advantages-list'>${d.advantages.map(a=>`<div class='adv-item'>${a}</div>`).join('')}</div></div></div>
-`;
+    content.innerHTML = `
+      <div class='section'><div class='inner' style='color:var(--bg-light)'><div class='title-big'>${d.aboutTitle}</div><div class='text'>${d.about}</div></div></div>
+      <div class='section' style='background:var(--bg-light)'><div class='inner' style='color:var(--white)'><div class='title-big'>${d.produceTitle}</div><div class='text'>${d.produce}</div><table class='table'>${renderTable(d.headers1, d.cols1)}</table></div></div>
+      <div class='section'><div class='inner' style='color:var(--bg-light)'><div class='title-big'>${d.productsTitle}</div><div class='row'>${d.productLabels.map((label, i) => `<div><div class='img' style='background: url(images/products/product_${i}.jpg) center / cover;'></div><div class='img-label'>${label}</div></div>`).join('')}</div></div></div>
+      <div class='section' style='background:var(--bg-dark)'><div class='inner' style='color:var(--white)'><div class='title-big'>${d.supplyTitle}</div><div class='text'>${d.supply}</div><table class='table table-dark'>${renderTable(d.headers2, d.cols2)}</table></div></div>
+      <div class='section'><div class='inner' style='color:var(--bg-light)'><div class='title-big'>${d.partnersTitle}</div><div class='partners'>${partners.map(p => `<img class='partner-img' src='images/partners/partner_${p}.png'>`).join('')}</div></div></div>
+      <div class='section'><div class='inner' style='color:var(--bg-light)'><div class='title-big'>${d.advantagesTitle}</div><div class='advantages-list'>${d.advantages.map(a => `<div class='adv-item'>${a}</div>`).join('')}</div></div></div>
+    `;
 
-let addr=lang==='ru'?addressRU:lang==='kz'?addressKZ:addressEN;
-contacts.innerHTML=`<div class='contacts-title'>${d.contactsTitle}</div>
-<div class='click'>☏ <a href='tel:+77753316444'>${phoneFormatted}</a></div>
-<div class='click'>✉ <a href='mailto:promresurs-mpga@outlook.com'>promresurs-mpga@outlook.com</a></div>
-<div class='click'>⌂ <a href='https://maps.google.com/?q=50.285870,57.219343'>${addr}</a></div>`;
+    let addr = lang === 'ru' ? addressRU : lang === 'kz' ? addressKZ : addressEN;
+    contacts.innerHTML = `
+      <div class='contacts-title'>${d.contactsTitle}</div>
+      <div class='click'>☏ <a href='tel:+77753316444'>${phoneFormatted}</a></div>
+      <div class='click'>✉ <a href='mailto:promresurs-mpga@outlook.com'>promresurs-mpga@outlook.com</a></div>
+      <div class='click'>🌏︎ <a href='https://maps.google.com/?q=50.285870,57.219343'>${addr}</a></div>
+    `;
 
-footerTitle.innerHTML=d.title;
-footerSub.innerHTML=d.subtitle;
-footerRight.innerHTML=`<div>☏ ${phoneFormatted}</div><div>✉ promresurs-mpga@outlook.com</div><div>⌂ ${addr}</div>`;
+    footerTitle.innerHTML = d.title;
+    footerSub.innerHTML = d.subtitle;
+    footerRight.innerHTML = `
+      <div>☏ ${phoneFormatted}</div>
+      <div>✉ promresurs-mpga@outlook.com</div>
+      <div>🌏︎ ${addr}</div>
+    `;
 
-renderLang();
-}
+    renderLang();
+  }
 
-function renderTable(h,c){let html='<tr>';h.forEach(x=>html+=`<th>${x}</th>`);html+='</tr>';let m=Math.max(...c.map(a=>a.length));for(let i=0;i<m;i++){html+='<tr>';c.forEach(a=>html+=`<td>${a[i]||''}</td>`);html+='</tr>';}return html}
+  function renderTable(h, c) {
+    let html = '<tr>';
+    h.forEach(x => html += `<th>${x}</th>`);
+    html += '</tr>';
+    let m = Math.max(...c.map(a => a.length));
+    for (let i = 0; i < m; i++) {
+      html += '<tr>';
+      c.forEach(a => html += `<td>${a[i] || ''}</td>`);
+      html += '</tr>';
+    }
+    return html;
+  }
 
-function renderLang(){
-langBox.innerHTML='';
-['ru','kz','en'].forEach(l=>{
-let div=document.createElement('div');
-div.className='lang-item'+(l===lang?' active':'');
-div.innerText=l==='ru'?'РУС':l==='kz'?'ҚАЗ':'ENG';
-if(l!==lang) div.onclick=()=>{lang=l;currentLang.innerText=div.innerText;langBox.style.display='none';arrow.innerText='▾';render()};
-langBox.appendChild(div);
-});
-}
+  function renderLang() {
+    langBox.innerHTML = '';
+    ['ru', 'kz', 'en'].forEach(l => {
+      let div = document.createElement('div');
+      div.className = 'lang-item' + (l === lang ? ' active' : '');
+      div.innerText = l === 'ru' ? 'РУС' : l === 'kz' ? 'ҚАЗ' : 'ENG';
+      if (l !== lang) {
+        div.onclick = () => {
+          lang = l;
+          currentLang.innerText = div.innerText;
+          closeLang();
+          render();
+          renderMobileLang();
+        };
+      }
+      langBox.appendChild(div);
+    });
+  }
 
-function toggleLang(){
-let open=langBox.style.display==='block';
-langBox.style.display=open?'none':'block';
-arrow.innerText=open?'▾':'▴';
-}
+  function toggleLang() {
+    let open = langBox.style.display === 'block';
+    langBox.style.display = open ? 'none' : 'block';
+    arrow.innerText = open ? '▾' : '▴';
+  }
 
-function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'})}
+  function closeLang() {
+    langBox.style.display = 'none';
+    arrow.innerText = '▾';
+  }
 
-render();
+  function toggleMobileMenu() {
+    let menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('active');
+  }
+
+  function toggleMobileLang() {
+    let langBox = document.getElementById('mobileLangBox');
+    let open = langBox.style.display === 'block';
+    langBox.style.display = open ? 'none' : 'block';
+    document.getElementById('mobileArrow').innerText = open ? '▾' : '▴';
+  }
+
+  function renderMobileLang() {
+    let mobileLangBox = document.getElementById('mobileLangBox');
+    mobileLangBox.innerHTML = '';
+    ['ru', 'kz', 'en'].forEach(l => {
+      let div = document.createElement('div');
+      div.className = 'lang-item' + (l === lang ? ' active' : '');
+      div.innerText = l === 'ru' ? 'РУС' : l === 'kz' ? 'ҚАЗ' : 'ENG';
+      if (l !== lang) {
+        div.onclick = () => {
+          lang = l;
+          let mobileLang = document.getElementById('mobileLang');
+          mobileLang.innerText = div.innerText;
+          currentLang.innerText = div.innerText;
+          closeLang();
+          closeMobileLang();
+          closeMobileMenu();
+          render();
+        };
+      }
+      mobileLangBox.appendChild(div);
+    });
+  }
+
+  function closeMobileLang() {
+    let langBox = document.getElementById('mobileLangBox');
+    langBox.style.display = 'none';
+    document.getElementById('mobileArrow').innerText = '▾';
+  }
+
+  function closeMobileMenu() {
+    let menu = document.getElementById('mobileMenu');
+    menu.classList.remove('active');
+  }
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  render();
+  renderMobileLang();
+
+  // Parallax effect
+  let heroImg = document.querySelector('.hero img');
+  window.addEventListener('scroll', () => {
+    let scrollPos = window.scrollY;
+    let heroRect = document.querySelector('.hero').getBoundingClientRect();
+    if (heroRect.top < window.innerHeight) {
+      let offset = scrollPos * 0.25;
+      heroImg.style.transform = `translateY(${offset}px)`;
+    }
+  });
 </script>
 
 </body>
