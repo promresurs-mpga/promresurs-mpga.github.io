@@ -28,6 +28,11 @@
     body {
       margin: 0;
       font-family: 'Ubuntu Condensed', sans-serif;
+      background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-light) 0%, var(--bg-dark) 100%);
+    }
+
+    html {
+      background: var(--bg-light);
     }
 
     a {
@@ -59,7 +64,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: calc(var(--fs-1) / 8);
+      padding: calc(var(--fs-4) / 2);
     }
 
     .header-left {
@@ -182,7 +187,7 @@
     }
 
     .table td {
-      font-size: var(--fs-3);
+      font-size: var(--fs-4);
       background: var(--white);
       color: var(--bg-dark);
     }
@@ -208,8 +213,8 @@
     }
 
     .img {
-      width: calc(var(--fs-1) * 2.5);
-      height: calc(var(--fs-1) * 2.5);
+      width: calc(var(--fs-1) * 5);
+      height: calc(var(--fs-1) * 5);
       background: var(--gray);
     }
 
@@ -234,13 +239,13 @@
 
     /* Advantages */
     .advantages-list {
-      margin-top: calc(var(--fs-3) / 2);
+      margin-top: calc(var(--fs-2));
       margin-bottom: calc(var(--fs-2) / 2);
     }
 
     .adv-item {
       font-size: var(--fs-3);
-      font-weight: bold;
+      font-weight: normal;
       padding: calc(var(--fs-4) / 2) 0;
       border-top: calc(var(--fs-2) / 16) solid var(--bg-light);
     }
@@ -269,7 +274,7 @@
       text-align: left;
       display: flex;
       flex-direction: column;
-      gap: calc(var(--fs-2) / 2);
+      gap: calc(var(--fs-3));
     }
 
     .contacts-title {
@@ -317,7 +322,7 @@
     .footer-sub {
       color: var(--gray);
       font-size: var(--fs-4);
-      margin-top: calc(var(--fs-4) / 2);
+      margin-top: calc(var(--fs-5));
       cursor: pointer;
       transition: 0.25s;
     }
