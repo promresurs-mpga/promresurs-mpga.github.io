@@ -68,7 +68,9 @@
       transition: 0.25s;
     }
 
-    .header-left:hover {
+    .header-left:hover,
+    .header-left:hover .title,
+    .header-left:hover .subtitle {
       color: var(--bg-dark);
     }
 
@@ -107,6 +109,7 @@
       background: var(--white);
       border: 1px solid var(--bg-dark);
       width: 100%;
+      z-index: 10000;
     }
 
     .lang-item {
@@ -179,7 +182,7 @@
     }
 
     .table td {
-      font-size: var(--fs-4);
+      font-size: var(--fs-3);
       background: var(--white);
       color: var(--bg-dark);
     }
@@ -212,7 +215,7 @@
 
     .img-label {
       margin-top: calc(var(--fs-4) / 2);
-      font-size: var(--fs-4);
+      font-size: var(--fs-3);
       color: var(--bg-light);
     }
 
@@ -226,12 +229,13 @@
     }
 
     .partner-img {
-      max-height: var(--fs-4);
+      max-height: calc(var(--fs-4) * 2);
     }
 
     /* Advantages */
     .advantages-list {
-      margin-top: calc(var(--fs-3));
+      margin-top: calc(var(--fs-3) / 2);
+      margin-bottom: calc(var(--fs-2) / 2);
     }
 
     .adv-item {
@@ -263,6 +267,9 @@
       color: var(--light-gray);
       font-size: var(--fs-3);
       text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--fs-2) / 2);
     }
 
     .contacts-title {
@@ -309,8 +316,8 @@
 
     .footer-sub {
       color: var(--gray);
-      font-size: calc(var(--fs-2) * 0.75);
-      margin-top: calc(var(--fs-3) / 4);
+      font-size: var(--fs-4);
+      margin-top: calc(var(--fs-4) / 2);
       cursor: pointer;
       transition: 0.25s;
     }
@@ -625,7 +632,7 @@
     content.innerHTML = `
       <div class='section'><div class='inner' style='color:var(--bg-light)'><div class='title-big'>${d.aboutTitle}</div><div class='text'>${d.about}</div></div></div>
       <div class='section' style='background:var(--bg-light)'><div class='inner' style='color:var(--white)'><div class='title-big'>${d.produceTitle}</div><div class='text'>${d.produce}</div><table class='table'>${renderTable(d.headers1, d.cols1)}</table></div></div>
-      <div class='section'><div class='inner' style='color:var(--bg-light)'><div class='title-big'>${d.productsTitle}</div><div class='row'>${d.productLabels.map((label, i) => `<div><div class='img' style='background: url(images/products/product_${i}.jpg) center / cover;'></div><div class='img-label'>${label}</div></div>`).join('')}</div></div></div>
+      <div class='section'><div class='inner' style='color:var(--bg-light)'><div class='title-big'>${d.productsTitle}</div><div class='row'>${d.productLabels.map((label, i) => `<div><div class='img' style='background: url(images/products/product_${i}.png) center / cover;'></div><div class='img-label'>${label}</div></div>`).join('')}</div></div></div>
       <div class='section' style='background:var(--bg-dark)'><div class='inner' style='color:var(--white)'><div class='title-big'>${d.supplyTitle}</div><div class='text'>${d.supply}</div><table class='table table-dark'>${renderTable(d.headers2, d.cols2)}</table></div></div>
       <div class='section'><div class='inner' style='color:var(--bg-light)'><div class='title-big'>${d.partnersTitle}</div><div class='partners'>${partners.map(p => `<img class='partner-img' src='images/partners/partner_${p}.png'>`).join('')}</div></div></div>
       <div class='section'><div class='inner' style='color:var(--bg-light)'><div class='title-big'>${d.advantagesTitle}</div><div class='advantages-list'>${d.advantages.map(a => `<div class='adv-item'>${a}</div>`).join('')}</div></div></div>
@@ -746,13 +753,27 @@
   render();
   renderMobileLang();
 
-  // Parallax effect
+  // Close language menu on document click
+  document.addEventListener('click', (e) => {
+    let langBox = document.getElementById('langBox');
+    let lang = document.querySelector('.lang');
+    if (langBox && lang && !lang.contains(e.target)) {
+      closeLang();
+    }
+  });
+
+  // Parallax effect - bottom point is when image bottom reaches viewport top
   let heroImg = document.querySelector('.hero img');
+  let heroSection = document.querySelector('.hero');
   window.addEventListener('scroll', () => {
-    let scrollPos = window.scrollY;
-    let heroRect = document.querySelector('.hero').getBoundingClientRect();
-    if (heroRect.top < window.innerHeight) {
-      let offset = scrollPos * 0.25;
+    let heroRect = heroSection.getBoundingClientRect();
+    let heroBottom = heroRect.bottom;
+    let viewportHeight = window.innerHeight;
+    
+    if (heroBottom > 0) {
+      let scrollProgress = (viewportHeight - heroBottom) / viewportHeight;
+      let maxOffset = heroSection.offsetHeight * 0.25;
+      let offset = Math.max(0, scrollProgress * maxOffset);
       heroImg.style.transform = `translateY(${offset}px)`;
     }
   });
