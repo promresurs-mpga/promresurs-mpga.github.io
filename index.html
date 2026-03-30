@@ -64,7 +64,7 @@
     }
 
     .header-left {
-      margin-left: calc(var(--fs-1) / 4);
+      margin-left: calc(var(--fs-1) / 8);
       cursor: pointer;
       transition: 0.25s;
     }
@@ -152,13 +152,13 @@
     .title-big {
       font-size: var(--fs-1);
       font-weight: bold;
-      margin-bottom: calc(var(--fs-1) / 4);
+      margin-bottom: calc(var(--fs-1) / 2);
     }
 
     .text {
       font-size: var(--fs-3);
       line-height: 1.6;
-      margin-top: calc(var(--fs-2) / 4);
+      margin-top: calc(var(--fs-2) / 2);
     }
 
     /* Tables */
@@ -209,8 +209,8 @@
     }
 
     .img {
-      width: calc(var(--fs-1) * 5);
-      height: calc(var(--fs-1) * 5);
+      width: calc(var(--fs-1) * 4);
+      height: calc(var(--fs-1) * 4);
       background: var(--gray);
     }
 
@@ -270,7 +270,7 @@
       text-align: left;
       display: flex;
       flex-direction: column;
-      gap: calc(var(--fs-4));
+      gap: calc(var(--fs-4) / 2);
     }
 
     .contacts-title {
@@ -318,7 +318,7 @@
     .footer-sub {
       color: var(--gray);
       font-size: var(--fs-4);
-      margin-top: calc(var(--fs-4) / 4);
+      margin-top: calc(var(--fs-4) / 16);
       cursor: pointer;
       transition: 0.25s;
     }
@@ -389,11 +389,11 @@
     /* Responsive design */
     @media (max-width: 768px) {
       :root {
-        --fs-1: 36px;
-        --fs-2: 27px;
-        --fs-3: 18px;
-        --fs-4: 13.5px;
-        --fs-5: 9px;
+        --fs-1: 40px;
+        --fs-2: 30px;
+        --fs-3: 20px;
+        --fs-4: 15px;
+        --fs-5: 10px;
       }
 
       .inner {
@@ -404,35 +404,34 @@
         position: relative;
         flex-wrap: wrap;
         gap: calc(var(--fs-3) / 2);
+        padding: calc(var(--fs-5) * 1.5);
       }
 
       .header-left {
         margin-left: 0;
         flex-basis: 100%;
         order: 1;
+        text-align: center;
       }
 
       .header-right {
         gap: calc(var(--fs-3) / 2);
         font-size: var(--fs-4);
         order: 2;
-        width: calc(100% - calc(var(--fs-2) * 1.5));
+        width: 100%;
+        justify-content: center;
       }
 
       .header-right span {
-        display: none;
+        display: inline;
       }
 
       .lang {
-        display: none;
+        display: block;
       }
 
       .mobile-menu-btn {
-        display: block;
-        order: 3;
-        position: absolute;
-        right: calc(var(--fs-3) / 2);
-        top: 100%;
+        display: none;
       }
 
       .mobile-menu {
@@ -440,7 +439,7 @@
       }
 
       .header:has(.mobile-menu.active) .mobile-menu {
-        display: flex;
+        display: none;
       }
 
       .contacts-inner {
@@ -467,11 +466,11 @@
 
     @media (max-width: 480px) {
       :root {
-        --fs-1: 24px;
-        --fs-2: 18px;
-        --fs-3: 12px;
-        --fs-4: 9px;
-        --fs-5: 6px;
+        --fs-1: 28px;
+        --fs-2: 21px;
+        --fs-3: 14px;
+        --fs-4: 10.5px;
+        --fs-5: 7px;
       }
 
       .inner {
@@ -489,6 +488,26 @@
 
       .hero {
         height: 50vh;
+      }
+
+      .header {
+        padding: calc(var(--fs-5) * 1.2);
+      }
+
+      .title {
+        font-size: var(--fs-1);
+      }
+
+      .subtitle {
+        font-size: var(--fs-3);
+      }
+
+      .partners {
+        gap: calc(var(--fs-3) / 2);
+      }
+
+      .partner-img {
+        max-height: calc(var(--fs-4) * 1.5);
       }
     }
   </style>
@@ -545,6 +564,7 @@
 
   <script>
   const phoneFormatted = '+7 (775) 331-64-44';
+  const emailFormatted = 'promresurs-mpga@protonmail.com';
   const addressRU = 'Республика Казахстан, г. Актобе, р-н Алматы, ул. Карасай Батыра 35, н. п. 2';
   const addressKZ = 'Қазақстан Республикасы, Ақтөбе қ., Алматы ауданы, Қарасай Батыр көшесі 35, н. п. 2';
   const addressEN = 'Republic of Kazakhstan, Aktobe, Almaty district, Karasai Batyr st. 35, office 2';
@@ -624,10 +644,10 @@
     title.innerHTML = d.title;
     subtitle.innerHTML = d.subtitle;
     phone.innerHTML = `<a href='tel:+77753316444'>${phoneFormatted}</a>`;
-    email.innerHTML = `<a href='mailto:promresurs-mpga@outlook.com'>promresurs-mpga@outlook.com</a>`;
+    email.innerHTML = `<a href='mailto:${emailFormatted}'>${emailFormatted}</a>`;
     
     mobilePhone.innerHTML = `☏ <a href='tel:+77753316444'>${phoneFormatted}</a>`;
-    mobileEmail.innerHTML = `✉ <a href='mailto:promresurs-mpga@outlook.com'>promresurs-mpga@outlook.com</a>`;
+    mobileEmail.innerHTML = `✉ <a href='mailto:${emailFormatted}'>${emailFormatted}</a>`;
     mobileLang.textContent = currentLang.textContent;
 
     content.innerHTML = `
@@ -643,7 +663,7 @@
     contacts.innerHTML = `
       <div class='contacts-title'>${d.contactsTitle}</div>
       <div class='click'>☏ <a href='tel:+77753316444'>${phoneFormatted}</a></div>
-      <div class='click'>✉ <a href='mailto:promresurs-mpga@outlook.com'>promresurs-mpga@outlook.com</a></div>
+      <div class='click'>✉ <a href='mailto:${emailFormatted}'>${emailFormatted}</a></div>
       <div class='click'>🌏︎ <a href='https://maps.google.com/?q=50.285870,57.219343'>${addr}</a></div>
     `;
 
@@ -651,7 +671,7 @@
     footerSub.innerHTML = d.subtitle;
     footerRight.innerHTML = `
       <div>☏ ${phoneFormatted}</div>
-      <div>✉ promresurs-mpga@outlook.com</div>
+      <div>✉ ${emailFormatted}</div>
       <div>🌏︎ ${addr}</div>
     `;
 
@@ -763,21 +783,27 @@
     }
   });
 
-  // Parallax effect - bottom point is when image bottom reaches viewport top
+  // Parallax effect - smooth scrolling without jumping
   let heroImg = document.querySelector('.hero img');
   let heroSection = document.querySelector('.hero');
-  window.addEventListener('scroll', () => {
+  
+  function updateParallax() {
     let heroRect = heroSection.getBoundingClientRect();
-    let heroBottom = heroRect.bottom;
+    let heroTop = heroRect.top;
+    let heroHeight = heroRect.height;
     let viewportHeight = window.innerHeight;
     
-    if (heroBottom > 0) {
-      let scrollProgress = (viewportHeight - heroBottom) / viewportHeight;
+    // Only apply parallax while hero is visible
+    if (heroTop < viewportHeight && heroTop + heroHeight > 0) {
+      let scrollRatio = (viewportHeight - heroTop) / (viewportHeight + heroHeight);
       let maxOffset = heroSection.offsetHeight * 0.25;
-      let offset = Math.max(0, scrollProgress * maxOffset);
+      let offset = scrollRatio * maxOffset;
       heroImg.style.transform = `translateY(${offset}px)`;
     }
-  });
+  }
+  
+  window.addEventListener('scroll', updateParallax, { passive: true });
+  updateParallax(); // Initialize on page load
 </script>
 
 </body>
