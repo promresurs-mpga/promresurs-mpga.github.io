@@ -29,6 +29,7 @@
       margin: 0;
       font-family: 'Ubuntu Condensed', sans-serif;
       background: var(--white);
+      overflow-x: hidden;
     }
 
     a {
@@ -110,6 +111,7 @@
       background: var(--white);
       border: 1px solid var(--bg-dark);
       width: 100%;
+      min-width: 80px;
       z-index: 10000;
     }
 
@@ -140,7 +142,7 @@
 
     .hero img {
       width: 100%;
-      height: 120%;
+      height: 100%;
       object-fit: cover;
       position: absolute;
       top: 0;
@@ -420,6 +422,8 @@
         order: 2;
         width: 100%;
         justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
       }
 
       .header-right span {
@@ -445,6 +449,7 @@
       .contacts-inner {
         flex-direction: column;
         gap: calc(var(--fs-2));
+        padding: 0 calc(var(--fs-5));
       }
 
       .contacts-inner iframe {
@@ -457,10 +462,16 @@
       .footer {
         flex-direction: column;
         gap: calc(var(--fs-3));
+        padding: calc(var(--fs-3) / 2) calc(var(--fs-5));
+      }
+
+      .footer-left {
+        width: 100%;
       }
 
       .footer-right {
         text-align: left;
+        width: 100%;
       }
     }
 
@@ -796,7 +807,7 @@
     // Only apply parallax while hero is visible
     if (heroTop < viewportHeight && heroTop + heroHeight > 0) {
       let scrollRatio = (viewportHeight - heroTop) / (viewportHeight + heroHeight);
-      let maxOffset = heroSection.offsetHeight * 0.25;
+      let maxOffset = heroSection.offsetHeight * 0.1;
       let offset = scrollRatio * maxOffset;
       heroImg.style.transform = `translateY(${offset}px)`;
     }
